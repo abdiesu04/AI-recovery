@@ -1,7 +1,7 @@
 import React from 'react';
 import Navbar from '../components/Navbar';
 import FeaturesCard from '../components/FeaturesCard';
-import { Box, Typography } from '@mui/material';
+import { Box, Typography, Button } from '@mui/material';
 
 const LandingPage: React.FC = () => {
   return (
@@ -15,8 +15,11 @@ const LandingPage: React.FC = () => {
           Transform Your Life with AI-Powered Recovery Support
         </Typography>
         <Typography variant="body1" mb={8} sx={{ maxWidth: '600px', margin: '0 auto', color: '#b0b0b0' }}>
-          Our AI chatbot provides personalized support and guidance to help you on your journey to recovery
+          Our AI chatbot provides personalized support and guidance to help you on your journey to recovery.
         </Typography>
+        <Button variant="contained" color="primary" sx={{ mb: 4 }}>
+          Get Started
+        </Button>
       </Box>
       <Box my={8} mx={4}>
         <FeaturesCard />

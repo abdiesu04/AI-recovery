@@ -5,25 +5,25 @@ import 'tailwindcss/tailwind.css';
 const FeaturesCard: React.FC = () => {
   const features = [
     {
-      imgSrc: "https://cdn-icons-png.flaticon.com/512/2769/2769339.png",
+      imgSrc: "../public/chatgpt.png",  
       altText: "Personalized AI Chatbot",
       title: "Personalized AI Chatbot",
       description: "Get personalized support and guidance from our AI chatbot."
     },
     {
-      imgSrc: "https://cdn-icons-png.flaticon.com/512/2716/2716451.png",
+      imgSrc: "https://faviicon.com/icons/progress_tracking.png",
       altText: "Progress Tracking",
       title: "Progress Tracking",
       description: "Track your progress over time with detailed insights."
     },
     {
-      imgSrc: "https://cdn-icons-png.flaticon.com/512/3190/3190578.png",
+      imgSrc: "https://faviicon.com/icons/community_support.png",
       altText: "Community Support",
       title: "Community Support",
       description: "Connect with a supportive community for shared experiences."
     },
     {
-      imgSrc: "https://cdn-icons-png.flaticon.com/512/2860/2860611.png",
+      imgSrc: "https://faviicon.com/icons/human_assistance.png",
       altText: "Human Assistance",
       title: "Human Assistance",
       description: "Receive personalized assistance from human experts when needed."
@@ -35,10 +35,10 @@ const FeaturesCard: React.FC = () => {
       <Grid container spacing={4} justifyContent="center">
         {features.map((feature, index) => (
           <Grid item xs={12} sm={6} md={3} key={index}>
-            <Card className="max-w-xs bg-gray-800 shadow-lg text-white rounded-lg">
+            <Card className="max-w-xs bg-gray-900 shadow-lg text-white rounded-lg">
               <CardMedia
                 component="img"
-                height="120"
+                height="100"
                 image={feature.imgSrc}
                 alt={feature.altText}
                 className="object-contain p-2"
