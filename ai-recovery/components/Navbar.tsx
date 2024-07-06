@@ -9,17 +9,17 @@ import Link from 'next/link';
 
 const Navbar: React.FC = () => {
   return (
-    <AppBar position="static" style={{ background: 'linear-gradient(to right, #000000, #434343)' }}>
+    <AppBar position="static" sx={{ background: 'linear-gradient(to bottom, #000000, #323232)', boxShadow: '0 4px 12px rgba(0, 0, 0, 0.3)' }}>
       <Toolbar>
-        <Typography variant="h6" component="div" style={{ flexGrow: 1, color: '#ffffff', fontFamily: 'Roboto, sans-serif', fontWeight: 'bold' }}>
+        <Typography variant="h6" component="div" sx={{ flexGrow: 1, color: '#ffffff', fontFamily: 'Roboto, sans-serif', fontWeight: 'bold' }}>
           LOGO
         </Typography>
         <Link href="/get-started" passHref>
-          <Button color="inherit" style={{ color: '#ffffff', border: '1px solid #ffffff', borderRadius: '4px', marginLeft: '16px', textTransform: 'none' }}>
+          <Button color="inherit" sx={{ color: '#ffffff', border: '1px solid #ffffff', borderRadius: '4px', ml: 2, textTransform: 'none' }}>
             Get Started
           </Button>
         </Link>
-        <IconButton edge="end" color="inherit" style={{ marginLeft: '16px' }}>
+        <IconButton edge="end" color="inherit" sx={{ ml: 2 }}>
           <AccountCircle />
         </IconButton>
       </Toolbar>

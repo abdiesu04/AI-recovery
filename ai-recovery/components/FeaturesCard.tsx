@@ -1,53 +1,49 @@
 import React from 'react';
-import { Card, CardContent, CardMedia, Typography, Grid, Box } from '@mui/material';
+import { Card, CardContent, Typography, Grid, Box } from '@mui/material';
+import ChatIcon from '@mui/icons-material/Chat';
+import TrackChangesIcon from '@mui/icons-material/TrackChanges';
+import GroupIcon from '@mui/icons-material/Group';
+import PersonIcon from '@mui/icons-material/Person';
 import 'tailwindcss/tailwind.css';
 
-const FeaturesCard: React.FC = () => {
-  const features = [
-    {
-      imgSrc: "../public/chatgpt.png",  
-      altText: "Personalized AI Chatbot",
-      title: "Personalized AI Chatbot",
-      description: "Get personalized support and guidance from our AI chatbot."
-    },
-    {
-      imgSrc: "https://faviicon.com/icons/progress_tracking.png",
-      altText: "Progress Tracking",
-      title: "Progress Tracking",
-      description: "Track your progress over time with detailed insights."
-    },
-    {
-      imgSrc: "https://faviicon.com/icons/community_support.png",
-      altText: "Community Support",
-      title: "Community Support",
-      description: "Connect with a supportive community for shared experiences."
-    },
-    {
-      imgSrc: "https://faviicon.com/icons/human_assistance.png",
-      altText: "Human Assistance",
-      title: "Human Assistance",
-      description: "Receive personalized assistance from human experts when needed."
-    }
-  ];
+const features = [
+  {
+    Icon: ChatIcon,
+    title: "Personalized AI Chatbot",
+    description: "Get personalized support and guidance from our AI chatbot."
+  },
+  {
+    Icon: TrackChangesIcon,
+    title: "Progress Tracking",
+    description: "Track your progress over time with detailed insights."
+  },
+  {
+    Icon: GroupIcon,
+    title: "Community Support",
+    description: "Connect with a supportive community for shared experiences."
+  },
+  {
+    Icon: PersonIcon,
+    title: "Human Assistance",
+    description: "Receive personalized assistance from human experts when needed."
+  }
+];
 
+const FeaturesCard: React.FC = () => {
   return (
     <Box sx={{ flexGrow: 1, pb: 4 }}>
       <Grid container spacing={4} justifyContent="center">
         {features.map((feature, index) => (
           <Grid item xs={12} sm={6} md={3} key={index}>
-            <Card className="max-w-xs bg-gray-900 shadow-lg text-white rounded-lg">
-              <CardMedia
-                component="img"
-                height="100"
-                image={feature.imgSrc}
-                alt={feature.altText}
-                className="object-contain p-2"
-              />
+            <Card className="bg-gray-900 shadow-lg text-white rounded-lg">
+              <Box sx={{ display: 'flex', justifyContent: 'center', pt: 2 }}>
+                <feature.Icon sx={{ fontSize: 50, color: 'white' }} />
+              </Box>
               <CardContent>
-                <Typography gutterBottom variant="h6" component="div" className="font-bold">
+                <Typography gutterBottom variant="h6" component="div" className="font-bold text-center">
                   {feature.title}
                 </Typography>
-                <Typography variant="body2" className="text-gray-400">
+                <Typography variant="body2" className="text-gray-400 text-center">
                   {feature.description}
                 </Typography>
               </CardContent>
