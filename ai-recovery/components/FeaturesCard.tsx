@@ -1,58 +1,46 @@
 import React from 'react';
-import { Card, CardContent, Typography, Grid, Box } from '@mui/material';
-import ChatIcon from '@mui/icons-material/Chat';
-import TrackChangesIcon from '@mui/icons-material/TrackChanges';
-import GroupIcon from '@mui/icons-material/Group';
-import PersonIcon from '@mui/icons-material/Person';
-import 'tailwindcss/tailwind.css';
+import { Container, Typography, Grid, Box } from '@mui/material';
 
 const features = [
-  {
-    Icon: ChatIcon,
-    title: "Personalized AI Chatbot",
-    description: "Get personalized support and guidance from our AI chatbot."
-  },
-  {
-    Icon: TrackChangesIcon,
-    title: "Progress Tracking",
-    description: "Track your progress over time with detailed insights."
-  },
-  {
-    Icon: GroupIcon,
-    title: "Community Support",
-    description: "Connect with a supportive community for shared experiences."
-  },
-  {
-    Icon: PersonIcon,
-    title: "Human Assistance",
-    description: "Receive personalized assistance from human experts when needed."
-  }
+  { title: 'Personalized Dashboard', description: 'Access your personalized recovery plan, track your progress, and stay organized with our intuitive dashboard.' },
+  { title: 'Therapist Interaction', description: 'Connect with verified therapists and counselors for one-on-one support and guidance.' },
+  { title: '24/7 AI Assistant', description: 'Get instant support and answers from our compassionate AI assistant, available anytime.' },
+  { title: 'Customized Recovery Plans', description: 'Receive personalized recovery plans tailored to your unique needs and goals.' },
+  { title: 'Progress Tracking', description: 'Monitor your progress, celebrate milestones, and identify areas for improvement.' },
+  { title: 'Community Support', description: 'Connect with a supportive community of individuals on similar recovery journeys.' },
+  { title: 'Educational Resources', description: 'Access a wealth of educational materials, including articles, videos, and podcasts, to deepen your understanding of addiction and recovery.' },
+  { title: 'Crisis Support', description: 'Receive immediate support and guidance during difficult moments through our crisis hotline and emergency resources.' },
+  { title: 'Habit Tracking', description: 'Develop and maintain healthy habits with our comprehensive habit tracking tools.' },
+  { title: 'Calendar Integration', description: 'Seamlessly integrate your recovery activities and appointments with your calendar for better organization.' },
+  { title: 'Family and Friends Support', description: 'Involve your loved ones in your recovery journey through our dedicated support features.' },
+  { title: 'Gamification', description: 'Stay motivated and engaged with our gamification elements, including rewards, challenges, and achievements.' },
 ];
 
-const FeaturesCard: React.FC = () => {
+const Features = () => {
   return (
-    <Box sx={{ flexGrow: 1, pb: 4 }}>
-      <Grid container spacing={4} justifyContent="center">
+    <Container maxWidth="lg" className="py-16">
+      <Typography variant="h4" component="h1" className="text-center mb-12 font-bold">
+        Comprehensive Support for Your Recovery
+      </Typography>
+      <Typography variant="body1" component="p" className="text-center mb-16">
+        Our recovery app offers a wide range of features to support you throughout your addiction recovery journey.
+      </Typography>
+      <Grid container spacing={4}>
         {features.map((feature, index) => (
-          <Grid item xs={12} sm={6} md={3} key={index}>
-            <Card className="bg-gray-900 shadow-lg text-white rounded-lg">
-              <Box sx={{ display: 'flex', justifyContent: 'center', pt: 2 }}>
-                <feature.Icon sx={{ fontSize: 50, color: 'white' }} />
-              </Box>
-              <CardContent>
-                <Typography gutterBottom variant="h6" component="div" className="font-bold text-center">
-                  {feature.title}
-                </Typography>
-                <Typography variant="body2" className="text-gray-400 text-center">
-                  {feature.description}
-                </Typography>
-              </CardContent>
-            </Card>
+          <Grid item xs={12} sm={6} key={index} className="mb-8">
+            <Box className="p-4">
+              <Typography variant="h6" component="h2" className="mb-2 font-semibold">
+                {feature.title}
+              </Typography>
+              <Typography variant="body2" component="p">
+                {feature.description}
+              </Typography>
+            </Box>
           </Grid>
         ))}
       </Grid>
-    </Box>
+    </Container>
   );
 };
 
-export default FeaturesCard;
+export default Features;

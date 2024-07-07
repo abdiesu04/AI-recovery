@@ -1,23 +1,22 @@
 import React from 'react';
-import { Box, Typography, Link, Container } from '@mui/material';
-import 'tailwindcss/tailwind.css';
+import { Container, Typography, Box, Link } from '@mui/material';
 
-const Footer: React.FC = () => {
+const Footer = () => {
   return (
-    <Box sx={{ background: '#121212', py: 4 }}>
-      <Container>
-        <Typography variant="body2" color="textSecondary" align="center" className="text-gray-500">
-          © {new Date().getFullYear()} Your Company. All rights reserved.
+    <Box className="bg-blue-600 py-4 mt-16">
+      <Container maxWidth="lg" className="flex justify-between items-center text-white">
+        <Typography variant="body2" component="p">
+          © 2024 Mindful Recovery
         </Typography>
-        <Box mt={2} className="flex justify-center space-x-4">
-          <Link href="#" color="inherit" className="text-gray-500 hover:text-white">
-            Privacy Policy
+        <Box className="flex space-x-4">
+          <Link href="#" color="inherit" underline="none">
+            Privacy
           </Link>
-          <Link href="#" color="inherit" className="text-gray-500 hover:text-white">
-            Terms of Service
+          <Link href="#" color="inherit" underline="none">
+            Terms
           </Link>
-          <Link href="#" color="inherit" className="text-gray-500 hover:text-white">
-            Contact Us
+          <Link href="#" color="inherit" underline="none">
+            Contact
           </Link>
         </Box>
       </Container>

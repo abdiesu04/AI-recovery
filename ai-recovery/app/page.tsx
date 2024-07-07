@@ -1,41 +1,48 @@
+'use client';
+
 import React from 'react';
-import Navbar from '../components/Navbar';
-import FeaturesCard from '../components/FeaturesCard';
-import Footer from '../components/Footer';
-import { Box, Typography, Button } from '@mui/material';
-import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
-import 'tailwindcss/tailwind.css';
+import Image from 'next/image';
+import { Button } from '@mui/material';
+import FeaturesCard from '@/components/FeaturesCard';
 
 const LandingPage: React.FC = () => {
   return (
-    <Box sx={{ background: 'linear-gradient(to bottom, #121212, #323232)', minHeight: '100vh', color: 'white', fontFamily: 'Roboto, sans-serif' }}>
-      <Navbar />
-      <Box textAlign="center" py={8} px={4}>
-        <Typography variant="h2" mb={4} className="font-bold tracking-wider text-4xl md:text-5xl">
-          Your Recovery Companion
-        </Typography>
-        <Typography variant="h5" mb={4} className="font-light text-xl md:text-2xl text-gray-400">
-          Transform Your Life with AI-Powered Recovery Support
-        </Typography>
-        <Typography variant="body1" mb={6} className="max-w-lg mx-auto text-gray-400 leading-relaxed">
-          Our AI chatbot provides personalized support and guidance to help you on your journey to recovery.
-        </Typography>
-        <Button
-          variant="contained"
-          color="primary"
-          endIcon={<ArrowForwardIcon />}
-          sx={{ textTransform: 'none', padding: '10px 20px', background: 'linear-gradient(to right, #00796b, #48a999)' }}
-        >
-          Get Started
-        </Button>
-      </Box>
-      <Box my={4} mx={4} sx={{ background: 'linear-gradient(to bottom, #323232, #121212)', py: 8 }}>
-        <FeaturesCard />
-      </Box>
-      <Footer />
-    </Box>
+    <>
+    <div className="flex items-center justify-center min-h-screen bg-gray-100">
+      <div className="max-w-7xl mx-auto bg-white rounded-lg shadow-2xl grid grid-cols-1 md:grid-cols-2 p-8 md:p-12">
+        <div className="flex flex-col justify-center">
+          <h1 className="text-6xl font-bold text-gray-900">
+            Empowering Your Recovery Journey
+          </h1>
+          <p className="mt-6 text-xl text-gray-600">
+            Our comprehensive recovery app provides personalized support, expert guidance, and a compassionate community <br /> to  help you achieve lasting sobriety.
+          </p>
+          <div className="mt-8 flex flex-col md:flex-row md:items-center">
+            <Button variant="contained" color="primary" className="w-full md:w-auto mb-4 md:mb-0 md:mr-4" size="large">
+              Get Started
+            </Button>
+            <Button variant="outlined" color="primary" className="w-full md:w-auto" size="large">
+              Learn More
+            </Button>
+          </div>
+        </div>
+        <div className="flex items-center justify-center">
+          <div className="relative w-full h-96 md:h-120">
+            <Image
+              src="/MindfulHomePage.png"
+              alt="Recovery Journey"
+              layout="fill"
+              objectFit="cover"
+              className="rounded-lg shadow-2xl"
+              priority
+              />
+          </div>
+        </div>
+      </div>
+    </div>
+    <FeaturesCard></FeaturesCard>
+  </>
   );
 };
 
 export default LandingPage;
-  
