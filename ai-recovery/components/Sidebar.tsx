@@ -1,72 +1,69 @@
+// components/Sidebar.tsx
+
+'use client';
+
 import React, { useState } from 'react';
-import { Drawer, List, ListItem, ListItemIcon, ListItemText, IconButton, Box } from '@mui/material';
-import { Dashboard, Chat, Group, Person, Menu } from '@mui/icons-material';
-import 'tailwindcss/tailwind.css';
+import { Drawer, List, ListItem, ListItemIcon, ListItemText, IconButton, Divider } from '@mui/material';
+import MenuIcon from '@mui/icons-material/Menu';
+import FormatQuoteIcon from '@mui/icons-material/FormatQuote';
+import DashboardIcon from '@mui/icons-material/Dashboard';
+import SupportAgentIcon from '@mui/icons-material/SupportAgent';
+import GroupIcon from '@mui/icons-material/Group';
+import LibraryBooksIcon from '@mui/icons-material/LibraryBooks';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
 const Sidebar: React.FC = () => {
-  const [mobileOpen, setMobileOpen] = useState(false);
+  const [open, setOpen] = useState(false);
 
-  const handleDrawerToggle = () => {
-    setMobileOpen(!mobileOpen);
+  const toggleDrawer = (isOpen: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
+    if (
+      event.type === 'keydown' &&
+      ((event as React.KeyboardEvent).key === 'Tab' || (event as React.KeyboardEvent).key === 'Shift')
+    ) {
+      return;
+    }
+    setOpen(isOpen);
   };
 
-  const drawerContent = (
-    <Box className="bg-gradient-to-b from-black to-gray-900 h-full p-4">
-      <Box className="text-center mb-4">
-        <img src="/logo.png" alt="Logo" className="h-10 mx-auto" />
-      </Box>
-      <List className="text-white">
-        <ListItem button className="hover:bg-gray-700 w-full">
-          <ListItemIcon>
-            <Dashboard className="text-white" />
-          </ListItemIcon>
-          <ListItemText primary="Dashboard" />
-        </ListItem>
-        <ListItem button className="hover:bg-gray-700 w-full">
-          <ListItemIcon>
-            <Chat className="text-white" />
-          </ListItemIcon>
-          <ListItemText primary="Support Chat" />
-        </ListItem>
-        <ListItem button className="hover:bg-gray-700 w-full">
-          <ListItemIcon>
-            <Group className="text-white" />
-          </ListItemIcon>
-          <ListItemText primary="Community" />
-        </ListItem>
-        <ListItem button className="hover:bg-gray-700 w-full">
-          <ListItemIcon>
-            <Person className="text-white" />
-          </ListItemIcon>
-          <ListItemText primary="Profile" />
-        </ListItem>
-      </List>
-    </Box>
-  );
+  const menuItems = [
+    { text: 'Quotes', icon: <FormatQuoteIcon /> },
+    { text: 'Dashboard', icon: <DashboardIcon /> },
+    { text: 'AI Assistant', icon: <SupportAgentIcon /> },
+    { text: 'Get a Therapist', icon: <GroupIcon /> },
+    { text: 'Resources', icon: <LibraryBooksIcon /> },
+    { text: 'Profile', icon: <AccountCircleIcon /> },
+  ];
 
   return (
-    <Box component="nav">
-      <Box className="flex md:hidden justify-between p-4 bg-gradient-to-b from-black to-gray-900">
-        <IconButton edge="start" color="inherit" aria-label="menu" onClick={handleDrawerToggle}>
-          <Menu className="text-white" />
-        </IconButton>
-      </Box>
-      <Drawer
-        variant="temporary"
-        anchor="left"
-        open={mobileOpen}
-        onClose={handleDrawerToggle}
-        ModalProps={{
-          keepMounted: true, // Better open performance on mobile.
-        }}
-        classes={{
-          paper: 'bg-gradient-to-b from-black to-gray-900',
-        }}
+    <>
+      <IconButton
+        edge="start"
+        color="inherit"
+        aria-label="menu"
+        onClick={toggleDrawer(true)}
+        className="fixed top-4 left-4 z-50 md:hidden"
       >
-        {drawerContent}
+        <MenuIcon />
+      </IconButton>
+      <Drawer anchor="left" open={open} onClose={toggleDrawer(false)}>
+        <div
+          className="w-64 bg-gray-900 text-white"
+          role="presentation"
+          onClick={toggleDrawer(false)}
+          onKeyDown={toggleDrawer(false)}
+        >
+          <div className="p-4 text-center font-bold text-xl border-b border-gray-700">Menu</div>
+          <List>
+            {menuItems.map((item, index) => (
+              <ListItem button key={index}>
+                <ListItemIcon className="text-white">{item.icon}</ListItemIcon>
+                <ListItemText primary={item.text} />
+              </ListItem>
+            ))}
+          </List>
+        </div>
       </Drawer>
-      <Box className="hidden md:block bg-gradient-to-b from-black to-gray-900 h-full">{drawerContent}</Box>
-    </Box>
+    </>
   );
 };
 
