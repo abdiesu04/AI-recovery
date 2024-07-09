@@ -1,28 +1,25 @@
 import React from 'react';
 import { Button } from '@mui/material';
 import DashboardIcon from '@mui/icons-material/Dashboard';
+import TrendingUpIcon from '@mui/icons-material/TrendingUp';
 
 const DashboardCard: React.FC = () => {
   return (
-    <div className="p-4 bg-white rounded-lg shadow-md">
-      <DashboardIcon style={{ fontSize: 40 }} />
-      <h2 className="text-xl font-bold mt-4">Dashboard</h2>
-      <p className="mt-2 text-gray-600">Track your progress with goal-setting, daily check-ins, and data visualization.</p>
-      <div className="flex mt-4">
-        <div className="mr-4">
-          <h3 className="font-bold">85%</h3>
-          <p>Goal Progress</p>
-        </div>
-        <div className="mr-4">
-          <h3 className="font-bold">12</h3>
-          <p>Days Sober</p>
-        </div>
-        <div>
-          <h3 className="font-bold">92%</h3>
-          <p>Habit Completion</p>
-        </div>
+    <div className="p-6 bg-white rounded-lg shadow-md transform hover:scale-105 transition-transform duration-300">
+      <div className="flex items-center mb-4">
+        <DashboardIcon style={{ fontSize: 40, color: '#2196F3' }} />
+        <h2 className="text-2xl font-bold ml-2 text-gray-900">Dashboard</h2>
       </div>
-      <Button variant="contained" color="primary" className="mt-4">
+      <p className="mt-2 text-gray-700">
+        Track your progress, set goals, and visualize data for continuous improvement.
+      </p>
+      <div className="flex items-center mt-4">
+        <TrendingUpIcon style={{ fontSize: 30, color: '#4CAF50' }} />
+        <p className="ml-2 text-gray-600">
+          Monitor trends and celebrate achievements along your journey to recovery.
+        </p>
+      </div>
+      <Button variant="contained" color="primary" className="mt-4 w-full">
         View Dashboard
       </Button>
     </div>

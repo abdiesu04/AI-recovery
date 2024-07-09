@@ -1,24 +1,25 @@
 import React from 'react';
 import { Button } from '@mui/material';
 import HealingIcon from '@mui/icons-material/Healing';
+import EmojiObjectsIcon from '@mui/icons-material/EmojiObjects';
 
 const PersonalizedRecoveryCard: React.FC = () => {
   return (
-    <div className="p-4 bg-white rounded-lg shadow-md">
-      <HealingIcon style={{ fontSize: 40 }} />
-      <h2 className="text-xl font-bold mt-4">Personalized Recovery</h2>
-      <p className="mt-2 text-gray-600">Customize your program based on individual needs and assessments.</p>
-      <div className="flex mt-4">
-        <div className="mr-4">
-          <h3 className="font-bold">2</h3>
-          <p>Assessments Completed</p>
-        </div>
-        <div>
-          <h3 className="font-bold">1</h3>
-          <p>Recovery Plan</p>
-        </div>
+    <div className="p-6 bg-white rounded-lg shadow-md transform hover:scale-105 transition-transform duration-300">
+      <div className="flex items-center mb-4">
+        <HealingIcon style={{ fontSize: 40, color: '#FFEB3B' }} />
+        <h2 className="text-2xl font-bold ml-2 text-gray-900">Personalized Recovery</h2>
       </div>
-      <Button variant="contained" color="primary" className="mt-4">
+      <p className="mt-2 text-gray-700">
+        Customize your recovery journey based on individual assessments and needs.
+      </p>
+      <div className="flex items-center mt-4">
+        <EmojiObjectsIcon style={{ fontSize: 30, color: '#FF9800' }} />
+        <p className="ml-2 text-gray-600">
+          Receive personalized recovery plans and support to achieve long-term wellness.
+        </p>
+      </div>
+      <Button variant="contained" color="primary" className="mt-4 w-full">
         View Recovery Plans
       </Button>
     </div>

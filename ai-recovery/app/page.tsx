@@ -1,13 +1,18 @@
-// pages/index.tsx or pages/index.js
-
 'use client';
 
 import React from 'react';
 import Image from 'next/image';
 import { Button } from '@mui/material';
-import FeaturesCard from '@/components/FeaturesCard'; // Corrected import path
+import FeaturesCard from '@/components/FeaturesCard';
 
 const LandingPage: React.FC = () => {
+  const handleLearnMoreClick = () => {
+    const featuresSection = document.getElementById('features-section');
+    if (featuresSection) {
+      featuresSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <>
       <div className="mt--15 flex items-center justify-center min-h-screen bg-gray-100">
@@ -23,7 +28,7 @@ const LandingPage: React.FC = () => {
               <Button variant="contained" color="primary" className="w-full md:w-auto mb-4 md:mb-0 md:mr-4" size="large">
                 Get Started
               </Button>
-              <Button variant="outlined" color="primary" className="w-full md:w-auto" size="large">
+              <Button variant="outlined" color="primary" className="w-full md:w-auto" size="large" onClick={handleLearnMoreClick}>
                 Learn More
               </Button>
             </div>
@@ -41,7 +46,9 @@ const LandingPage: React.FC = () => {
           </div>
         </div>
       </div>
-      <FeaturesCard />
+      <div id="features-section">
+        <FeaturesCard />
+      </div>
     </>
   );
 };

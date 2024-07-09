@@ -1,8 +1,9 @@
-'use client'
+'use client';
 
 import React from 'react';
 import { Container, Typography, Box } from '@mui/material';
 import { useInView } from 'react-intersection-observer';
+import { motion, useAnimation } from 'framer-motion'; // Import useAnimation from framer-motion
 import Footer from '../components/Footer';
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import GroupIcon from '@mui/icons-material/Group';
@@ -16,7 +17,6 @@ import TrackChangesIcon from '@mui/icons-material/TrackChanges';
 import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
 import FamilyRestroomIcon from '@mui/icons-material/FamilyRestroom';
 import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
-import { motion, useAnimation } from 'framer-motion'; // Import useAnimation from framer-motion
 
 const features = [
   { title: 'Personalized Dashboard', description: 'Access your personalized recovery plan, track your progress, and stay organized with our intuitive dashboard.', icon: <DashboardIcon fontSize="large" /> },
@@ -47,7 +47,7 @@ const Features = () => {
         </Box>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {features.map((feature, index) => (
-            <FeatureCard key={index} feature={feature} index={index} />
+            <FeatureCard key={index} feature={feature} />
           ))}
         </div>
       </Container>
@@ -55,13 +55,13 @@ const Features = () => {
   );
 };
 
-const FeatureCard = ({ feature, index }) => {
+const FeatureCard = React.memo(({ feature }) => {
   const { ref, inView } = useInView({
     triggerOnce: true,
     threshold: 0.1,
   });
 
-  const controls = useAnimation(); // Ensure useAnimation is imported correctly
+  const controls = useAnimation();
 
   React.useEffect(() => {
     if (inView) {
@@ -80,8 +80,10 @@ const FeatureCard = ({ feature, index }) => {
       ref={ref}
       initial={{ opacity: 0, y: 50 }}
       animate={controls}
-      className={`p-4 bg-white rounded shadow flex items-start`}
-      style={{ cursor: 'pointer', }}
+      className="p-4 bg-white rounded shadow flex items-start"
+      style={{ cursor: 'pointer' }}
+      role="button"
+      aria-label={`Feature: ${feature.title}`}
     >
       <div className="mr-4 text-blue-500">{feature.icon}</div>
       <div>
@@ -94,6 +96,8 @@ const FeatureCard = ({ feature, index }) => {
       </div>
     </motion.div>
   );
-};
+});
+
+FeatureCard.displayName = 'FeatureCard';
 
 export default Features;

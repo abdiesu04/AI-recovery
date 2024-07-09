@@ -1,30 +1,22 @@
-// components/Sidebar.tsx
-
 'use client';
 
-import React, { useState } from 'react';
-import { Drawer, List, ListItem, ListItemIcon, ListItemText, IconButton, Divider } from '@mui/material';
-import MenuIcon from '@mui/icons-material/Menu';
+import React from 'react';
+import { List, ListItem, ListItemIcon, ListItemText, Divider, Button, Fab } from '@mui/material';
 import FormatQuoteIcon from '@mui/icons-material/FormatQuote';
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import SupportAgentIcon from '@mui/icons-material/SupportAgent';
 import GroupIcon from '@mui/icons-material/Group';
 import LibraryBooksIcon from '@mui/icons-material/LibraryBooks';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import MenuIcon from '@mui/icons-material/Menu';
+import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 
-const Sidebar: React.FC = () => {
-  const [open, setOpen] = useState(false);
+interface SidebarProps {
+  isOpen: boolean;
+  toggleSidebar: () => void;
+}
 
-  const toggleDrawer = (isOpen: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
-    if (
-      event.type === 'keydown' &&
-      ((event as React.KeyboardEvent).key === 'Tab' || (event as React.KeyboardEvent).key === 'Shift')
-    ) {
-      return;
-    }
-    setOpen(isOpen);
-  };
-
+const Sidebar: React.FC<SidebarProps> = ({ isOpen, toggleSidebar }) => {
   const menuItems = [
     { text: 'Quotes', icon: <FormatQuoteIcon /> },
     { text: 'Dashboard', icon: <DashboardIcon /> },
@@ -35,35 +27,23 @@ const Sidebar: React.FC = () => {
   ];
 
   return (
-    <>
-      <IconButton
-        edge="start"
-        color="inherit"
-        aria-label="menu"
-        onClick={toggleDrawer(true)}
-        className="fixed top-4 left-4 z-50 md:hidden"
-      >
-        <MenuIcon />
-      </IconButton>
-      <Drawer anchor="left" open={open} onClose={toggleDrawer(false)}>
-        <div
-          className="w-64 bg-gray-900 text-white"
-          role="presentation"
-          onClick={toggleDrawer(false)}
-          onKeyDown={toggleDrawer(false)}
-        >
-          <div className="p-4 text-center font-bold text-xl border-b border-gray-700">Menu</div>
-          <List>
-            {menuItems.map((item, index) => (
-              <ListItem button key={index}>
-                <ListItemIcon className="text-white">{item.icon}</ListItemIcon>
-                <ListItemText primary={item.text} />
-              </ListItem>
-            ))}
-          </List>
-        </div>
-      </Drawer>
-    </>
+    <div className={`fixed top-0 bottom-0 left-0 z-40 bg-blue-500 text-white transform ${isOpen ? 'translate-x-0' : '-translate-x-full'} transition-transform duration-300 ease-in-out w-64`}>
+      <div className="flex items-center justify-between p-4">
+        <h2 className="text-2xl font-bold">Menu</h2>
+        <Button onClick={toggleSidebar} className="text-white">
+          <ChevronRightIcon />
+        </Button>
+      </div>
+      <Divider />
+      <List>
+        {menuItems.map((item, index) => (
+          <ListItem button key={index}>
+            <ListItemIcon className="text-white">{item.icon}</ListItemIcon>
+            <ListItemText primary={item.text} />
+          </ListItem>
+        ))}
+      </List>
+    </div>
   );
 };
 
