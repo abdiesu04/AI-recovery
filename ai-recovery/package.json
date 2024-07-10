@@ -14,9 +14,11 @@
     "@mui/icons-material": "^5.16.0",
     "@mui/material": "^5.16.0",
     "axios": "^1.7.2",
+    "framer-motion": "^11.2.14",
     "next": "14.2.4",
     "react": "^18",
     "react-dom": "^18",
+    "react-intersection-observer": "^9.10.3",
     "react-transition-group": "^4.4.5"
   },
   "devDependencies": {
