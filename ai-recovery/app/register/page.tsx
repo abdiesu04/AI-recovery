@@ -1,4 +1,4 @@
-'use client'
+'use client';
 import { useState } from 'react';
 import { Button, TextField, MenuItem, Card, CardContent, CardHeader, Typography, Alert, AlertTitle } from '@mui/material';
 import { styled, ThemeProvider, createTheme } from '@mui/material/styles';
@@ -14,10 +14,8 @@ import {
   EmojiPeople,
   Spa,
   Flag,
-  Stars
 } from '@mui/icons-material';
 import EnergySavingsLeafIcon from '@mui/icons-material/EnergySavingsLeaf';
-import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
 const questions = [
   { key: 'username', label: 'Username', description: 'Please enter a unique username for your account.', icon: <AccountCircle style={{ color: '#FFD700' }} /> },
@@ -95,43 +93,22 @@ const DescriptionBox = styled('div')(({ theme }) => ({
   flexDirection: 'column',
 }));
 
-const fadeStyles = {
-  enter: 'opacity-0 transform -translate-y-3',
-  enterActive: 'opacity-100 transform translate-y-0 transition-opacity transition-transform duration-300',
-  exit: 'opacity-100 transform translate-y-0',
-  exitActive: 'opacity-0 transform translate-y-3 transition-opacity transition-transform duration-300'
-};
-
 const Form = () => {
-  const [step, setStep] = useState(0);
   const [formData, setFormData] = useState<{ [key: string]: any }>({});
   const [openAlert, setOpenAlert] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFormData({ ...formData, [questions[step].key]: e.target.value });
-  };
-
-  const handleKeyDown = (e: React.KeyboardEvent) => {
-    if (e.key === 'Enter') {
-      nextStep();
-    }
-  };
-
-  const nextStep = () => {
-    if (!formData[questions[step].key]) {
-      setOpenAlert(true);
-    } else {
-      setOpenAlert(false);
-      setStep(step + 1);
-    }
-  };
-
-  const prevStep = () => {
-    setStep(step - 1);
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = () => {
-    console.log(formData);
+    const emptyFields = questions.filter(q => !formData[q.key]);
+    if (emptyFields.length > 0) {
+      setOpenAlert(true);
+    } else {
+      setOpenAlert(false);
+      console.log(formData);
+    }
   };
 
   return (
@@ -153,71 +130,48 @@ const Form = () => {
           {openAlert && (
             <Alert severity="warning" onClose={() => setOpenAlert(false)} className="mb-4">
               <AlertTitle>Warning</AlertTitle>
-              Please fill in the {questions[step].label} field before proceeding.
+              Please fill in all the fields before submitting.
             </Alert>
           )}
-          <TransitionGroup>
-            <CSSTransition key={step} timeout={300} classNames={fadeStyles}>
-              <div>
-                {step < questions.length && (
-                  <Card className="mb-4">
-                    <CardHeader avatar={<div>{questions[step].icon}</div>} title={questions[step].label} />
-                    <CardContent>
-                      <Typography variant="body2" className="mb-4">{questions[step].description}</Typography>
-                      <CustomTextField
-                        label={questions[step].label}
-                        variant="outlined"
-                        fullWidth
-                        type={questions[step].type || 'text'}
-                        value={formData[questions[step].key] || ''}
-                        onChange={handleChange}
-                        onKeyDown={handleKeyDown}
-                        select={questions[step].type === 'select'}
-                      >
-                        {questions[step].type === 'select' && questions[step].options.map((option) => (
-                          <MenuItem key={option} value={option}>
-                            {option}
-                          </MenuItem>
-                        ))}
-                      </CustomTextField>
-                    </CardContent>
-                  </Card>
-                )}
-              </div>
-            </CSSTransition>
-          </TransitionGroup>
-          <div className="flex justify-between">
-            {step > 0 && (
-              <Button
-                variant="contained"
-                color="secondary"
-                onClick={prevStep}
-              >
-                Previous
-              </Button>
-            )}
-            {step < questions.length - 1 ? (
-              <Button
-                variant="contained"
-                color="primary"
-                onClick={nextStep}
-              >
-                Next
-              </Button>
-            ) : (
-              <Button
-                variant="contained"
-                color="primary"
-                onClick={handleSubmit}
-              >
-                Submit
-              </Button>
-            )}
+          <Card className="mb-4">
+            <CardContent>
+              {questions.map((question) => (
+                <div key={question.key}>
+                  <CardHeader avatar={<div>{question.icon}</div>} title={question.label} />
+                  <Typography variant="body2" className="mb-4">{question.description}</Typography>
+                  <CustomTextField
+                    label={question.label}
+                    variant="outlined"
+                    fullWidth
+                    name={question.key}
+                    type={question.type || 'text'}
+                    value={formData[question.key] || ''}
+                    onChange={handleChange}
+                    select={question.type === 'select'}
+                  >
+                    {question.type === 'select' && question.options.map((option) => (
+                      <MenuItem key={option} value={option}>
+                        {option}
+                      </MenuItem>
+                    ))}
+                  </CustomTextField>
+                </div>
+              ))}
+            </CardContent>
+          </Card>
+          <div className="flex justify-end">
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={handleSubmit}
+            >
+              Submit
+            </Button>
           </div>
         </FormContainer>
       </div>
     </ThemeProvider>
   );
 };
-  
+
 export default Form;
