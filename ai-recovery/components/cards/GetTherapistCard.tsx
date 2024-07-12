@@ -19,7 +19,7 @@ const GetTherapistCard: React.FC = () => {
           Access personalized therapy options and foster a meaningful therapeutic relationship.
         </p>
       </div>
-      <Button variant="contained" color="primary" className="mt-4 w-full">
+      <Button variant="contained" color="primary" className=" bg-gradient-to-r from-green-400 via-green-500 to-green-600 mt-4 w-full">
         Find a Therapist
       </Button>
     </div>

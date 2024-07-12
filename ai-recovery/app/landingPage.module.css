@@ -1,0 +1,87 @@
+.landingBackground {
+  background-image: url('/Light Green Floral Happy Sunday Instagram Post (Website).png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  text-align: center;
+}
+
+.mainTitle {
+  animation-duration: 1s;
+  animation-fill-mode: both;
+  font-size: 4rem;
+  line-height: 1.2;
+  margin-bottom: 10px;
+  color: #fff;
+}
+
+.mainTitleLine2 {
+  font-size: 4rem;
+  line-height: 1.2;
+  color: #fff;
+  margin-bottom: 10px;
+}
+
+.subHeading {
+  animation-duration: 1.5s;
+  animation-fill-mode: both;
+  font-size: 1rem;
+  line-height: 1.5;
+  margin-bottom: 30px;
+  color: #fff;
+}
+
+.buttonPrimary {
+  background-color: #00BFFF; 
+  color: #fff;
+  margin-right: 10px;
+}
+
+.buttonSecondary {
+  background-color: #67B680; /* Green color */
+  color: #fff;
+}
+
+.typingEffect {
+  border-right: .15em solid orange;
+  white-space: nowrap;
+  overflow: hidden;
+  animation: typing 3.5s steps(30, end), blink-caret .75s step-end infinite;
+}
+
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: orange; }
+}
+
+.imageContainer {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.image {
+  width: 100%;
+  height: auto;
+  max-width: 400px; /* Adjust the max-width as needed */
+  border-radius: 20px;
+  box-shadow: 20px 20px 60px #d9d9d9, -20px -20px 60px #ffffff;
+  aspect-ratio: 1 / 1; /* Make the image square */
+}
+
+@media (min-width: 768px) {
+  .textContainer {
+    text-align: left;
+  }
+}

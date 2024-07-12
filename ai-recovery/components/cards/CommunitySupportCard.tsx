@@ -19,7 +19,7 @@ const CommunitySupportCard: React.FC = () => {
           Build a supportive network and access resources that inspire growth and recovery.
         </p>
       </div>
-      <Button variant="contained" color="primary" className="mt-4 w-full">
+      <Button variant="contained" color="primary" className=" bg-gradient-to-r from-green-400 via-green-500 to-green-600 mt-4 w-full">
         Join the Community
       </Button>
     </div>

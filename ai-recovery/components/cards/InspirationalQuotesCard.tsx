@@ -21,7 +21,7 @@ const InspirationalQuotesCard: React.FC = () => {
         </p>
       </div>
       <Link href="/qoutes" passHref>
-        <Button component="a" variant="contained" color="primary" className="mt-4 w-full">
+        <Button component="a" variant="contained" color="primary" className=" bg-gradient-to-r from-green-400 via-green-500 to-green-600 mt-4 w-full">
           Explore More Quotes
         </Button>
       </Link>

@@ -1,11 +1,39 @@
-'use client';
-
+'use client'
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { AppBar, Toolbar, Typography, IconButton, Drawer, List, ListItem, ListItemText } from '@mui/material';
+import { AppBar, Toolbar, Typography, IconButton, Drawer, List, ListItem, ListItemText, styled } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
-import EnergySavingsLeafIcon from '@mui/icons-material/EnergySavingsLeaf';
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import Image from 'next/image';
+import logo from '../public/logo.svg'; // Adjust this path if necessary
+
+const StyledAppBar = styled(AppBar)({
+  backgroundColor: '#67B680',
+  borderBottom: '2px solid #fff',
+});
+
+const StyledDrawer = styled('div')({
+  backgroundColor: '#67B680',
+  color: '#fff',
+  width: 250,
+});
+
+const StyledIconButton = styled(IconButton)({
+  color: '#fff',
+});
+
+const StyledLink = styled(Typography)({
+  color: '#fff',
+  fontSize: '1.2rem',
+  fontWeight: '700',
+  '&:hover': {
+    textDecoration: 'underline',
+  },
+});
+
+const StyledListItemText = styled(ListItemText)({
+  fontSize: '1.125rem',
+  fontWeight: '500',
+});
 
 const Navbar: React.FC = () => {
   const [drawerOpen, setDrawerOpen] = useState(false);
@@ -18,51 +46,63 @@ const Navbar: React.FC = () => {
   };
 
   const list = () => (
-    <div className="w-64 h-full bg-blue-500 text-white" role="presentation" onClick={toggleDrawer(false)} onKeyDown={toggleDrawer(false)}>
-      <List className="flex flex-col gap-4 mt-8">
+    <StyledDrawer role="presentation" onClick={toggleDrawer(false)} onKeyDown={toggleDrawer(false)}>
+      <List>
         {['Dashboard', 'Therapists', 'Community', 'Resources', 'Sign In'].map((text) => (
-          <ListItem button key={text} className="pl-6">
-            <ListItemText primary={text} primaryTypographyProps={{ className: 'text-lg font-medium' }} />
+          <ListItem button key={text}>
+            <StyledListItemText primary={text} />
           </ListItem>
         ))}
       </List>
-    </div>
+    </StyledDrawer>
   );
 
   return (
-    <AppBar position="static" className="bg-blue-500">
-      <Toolbar className="px-4 lg:px-6 h-20 flex items-center gap-2">
-        <Link href="#" className="flex items-center justify-center" prefetch={false}>
-          <EnergySavingsLeafIcon className="h-8 w-8 text-white mr-2" />
-          <Typography variant="h6" className="font-bold text-white text-lg">
-            Mindful Recovery
-          </Typography>
+    <StyledAppBar position="static">
+      <Toolbar>
+        <Link href="/" passHref>
+          <div className="flex items-center cursor-pointer">
+            <Image src={logo} alt="Addis Hiwot" width={40} height={40} />
+            <StyledLink variant="h6" className="ml-2">
+              Addis Hiwot
+            </StyledLink>
+          </div>
         </Link>
         <nav className="ml-auto hidden md:flex gap-6">
-          <Link href="#" className="text-base font-medium hover:underline underline-offset-4 text-white" prefetch={false}>
-            Dashboard
+          <Link href="/dashboard" passHref>
+            <StyledLink variant="body1">
+              Dashboard
+            </StyledLink>
           </Link>
-          <Link href="#" className="text-base font-medium hover:underline underline-offset-4 text-white" prefetch={false}>
-            Therapists
+          <Link href="/therapists" passHref>
+            <StyledLink variant="body1">
+              Therapists
+            </StyledLink>
           </Link>
-          <Link href="#" className="text-base font-medium hover:underline underline-offset-4 text-white" prefetch={false}>
-            Community
+          <Link href="/community" passHref>
+            <StyledLink variant="body1">
+              Community
+            </StyledLink>
           </Link>
-          <Link href="#" className="text-base font-medium hover:underline underline-offset-4 text-white" prefetch={false}>
-            Resources
+          <Link href="/resources" passHref>
+            <StyledLink variant="body1">
+              Resources
+            </StyledLink>
           </Link>
-          <Link href="#" className="text-base font-medium hover:underline underline-offset-4 text-white" prefetch={false}>
-            Sign In
+          <Link href="/signin" passHref>
+            <StyledLink variant="body1">
+              Sign In
+            </StyledLink>
           </Link>
         </nav>
-        <IconButton edge="end" color="inherit" className="text-white md:hidden ml-auto" onClick={toggleDrawer(true)}>
+        <StyledIconButton edge="end" className="md:hidden ml-auto" onClick={toggleDrawer(true)}>
           <MenuIcon />
-        </IconButton>
+        </StyledIconButton>
         <Drawer anchor="right" open={drawerOpen} onClose={toggleDrawer(false)}>
           {list()}
         </Drawer>
       </Toolbar>
-    </AppBar>
+    </StyledAppBar>
   );
 };
 

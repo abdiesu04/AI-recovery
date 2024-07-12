@@ -19,7 +19,7 @@ const HabitTrackerCard: React.FC = () => {
           Set goals and see improvement in daily habits to support your recovery goals.
         </p>
       </div>
-      <Button variant="contained" color="primary" className="mt-4 w-full">
+      <Button variant="contained" color="primary" className=" bg-gradient-to-r from-green-400 via-green-500 to-green-600 mt-4 w-full">
         View Habit Tracker
       </Button>
     </div>

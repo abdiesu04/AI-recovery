@@ -19,7 +19,7 @@ const DashboardCard: React.FC = () => {
           Monitor trends and celebrate achievements along your journey to recovery.
         </p>
       </div>
-      <Button variant="contained" color="primary" className="mt-4 w-full">
+      <Button variant="contained" color="primary" className=" bg-gradient-to-r from-green-400 via-green-500 to-green-600 mt-4 w-full">
         View Dashboard
       </Button>
     </div>

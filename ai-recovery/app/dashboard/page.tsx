@@ -5,7 +5,7 @@ import PersonalGoalsCard from '@/components/cards/PersonalGoalsCard';
 import DailyCheckInCard from '@/components/cards/DailyCheckInCard';
 import EventsMeetupsCard from '@/components/cards/EventsMeetupsCard';
 import RemindersCard from '@/components/cards/RemindersCard';
-import ChartCard from '@/components/cards/ChartCard';
+import ChartCard from '@/components/cards/ComingSoonBadge';
 
 const Home: React.FC = () => {
   return (

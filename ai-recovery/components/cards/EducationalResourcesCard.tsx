@@ -19,7 +19,7 @@ const EducationalResourcesCard: React.FC = () => {
           Expand your knowledge and gain insights to support your recovery journey.
         </p>
       </div>
-      <Button variant="contained" color="primary" className="mt-4 w-full">
+      <Button variant="contained" color="primary" className=" bg-gradient-to-r from-green-400 via-green-500 to-green-600 mt-4 w-full">
         Explore Resources
       </Button>
     </div>
