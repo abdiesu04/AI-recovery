@@ -4,8 +4,8 @@ import React, { useEffect, useState } from 'react';
 import { Button } from '@mui/material';
 import FeaturesCard from '@/components/FeaturesCard';
 import Link from 'next/link';
-import 'animate.css'; // Import animate.css for animations
-import styles from './landingPage.module.css'; // Import the separate CSS file
+import 'animate.css'; 
+import styles from './landingPage.module.css'; 
 import Image from 'next/image';
 
 const LandingPage: React.FC = () => {
@@ -47,11 +47,23 @@ const LandingPage: React.FC = () => {
             </p>
             <div className="mt-6 flex flex-col md:flex-row md:items-center justify-center md:justify-start gap-4">
               <Link href="/login" passHref>
-                <Button variant="contained" style={{ backgroundColor: '#87CEEB', color: '#000' }} className="w-full md:w-auto" size="large">
+                <Button
+                  variant="contained"
+                  style={{ backgroundColor: '#87CEEB', color: '#000' }}
+                  className="w-full md:w-auto"
+                  size="large"
+                  component="a"
+                >
                   Get Started
                 </Button>
               </Link>
-              <Button variant="outlined" style={{ borderColor: '#87CEEB', color: '#fff' }} className="w-full md:w-auto" size="large" onClick={handleLearnMoreClick}>
+              <Button
+                variant="outlined"
+                style={{ borderColor: '#87CEEB', color: '#fff' }}
+                className="w-full md:w-auto"
+                size="large"
+                onClick={handleLearnMoreClick}
+              >
                 Learn More
               </Button>
             </div>
