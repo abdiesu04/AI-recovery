@@ -1,0 +1,74 @@
+#environments
+/env
+/apienv
+# Environment variables
+.env
+
+# Build and distribution artifacts
+__pycache__/
+dist/
+build/
+*.egg-info/
+
+# IDE and virtual environment files
+.idea/
+.vscode/
+.venv/
+env.py
+
+# Temporary test and log files
+.pytest_cache/
+tests/test_*.log
+
+# Documentation related files
+docs/_build/
+
+# Optional: Coverage reports
+htmlcov/
+.coverage
+
+# Git large files (if applicable)
+*.mp4
+*.mov
+*.avi
+*.wmv
+*.mkv
+*.flv
+*.swf
+*.ogg
+*.oga
+*.ogv
+*.webm
+*.mp3
+*.wav
+*.flac
+*.aac
+*.wma
+*.aiff
+*.mid
+*.midi
+*.rtf
+*.docx
+*.pptx
+*.xlsx
+*.csv
+*.pdf
+
+# Optional: Specific file types
+*.txt  # Adjust as needed
+*.log  # Adjust as needed
+
+# Dependency lock files (choose one based on your package manager)
+requirements.txt
+requirements-dev.txt  # For development dependencies
+Pipfile  # If using Pipenv
+poetry.lock  # If using Poetry
+
+# Editor temporary/backup files
+*.swp
+*.swo
+
+# FastAPI cache files
+.fastapi-cache/
+#logs files
+*.log
