@@ -3,10 +3,10 @@ import { Container, Typography, Box, Link } from '@mui/material';
 
 const Footer = () => {
   return (
-    <Box className="bg-blue-600 py-4 mt-16">
+    <Box className="bg-green-400 py-4 mt-16">
       <Container maxWidth="lg" className="flex justify-between items-center text-white">
         <Typography variant="body2" component="p">
-          © 2024 Mindful Recovery
+          © 2024 Addis Hiwot
         </Typography>
         <Box className="flex space-x-4">
           <Link href="#" color="inherit" underline="none">

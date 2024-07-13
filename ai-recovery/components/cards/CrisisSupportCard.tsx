@@ -19,7 +19,7 @@ const CrisisSupportCard: React.FC = () => {
           Receive compassionate assistance and guidance during critical times.
         </p>
       </div>
-      <Button variant="contained" color="primary" className="mt-4 w-full">
+      <Button variant="contained" color="primary" className=" bg-gradient-to-r from-green-400 via-green-500 to-green-600 mt-4 w-full">
         Contact Crisis Support
       </Button>
     </div>

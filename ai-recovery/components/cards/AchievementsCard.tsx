@@ -26,7 +26,7 @@ const AchievementsCard: React.FC = () => {
           <p className="ml-1 text-gray-600">Points</p>
         </div>
       </div>
-      <Button variant="contained" color="primary" className="mt-6 w-full">
+      <Button variant="contained" color="primary" className=" bg-gradient-to-r from-green-400 via-green-500 to-green-600 mt-4 w-full">
         View Achievements
       </Button>
     </div>

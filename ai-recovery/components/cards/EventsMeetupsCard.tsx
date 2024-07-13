@@ -23,7 +23,7 @@ const EventsMeetupsCard: React.FC = () => {
             <span className="ml-2">Local Recovery Meetup: May 20, 5pm</span>
           </li>
         </ul>
-        <Button variant="contained" color="primary" className="mt-4 w-full">
+        <Button variant="contained" color="primary" className=" bg-gradient-to-r from-green-400 via-green-500 to-green-600 mt-4 w-full">
           View Calendar
         </Button>
       </CardContent>
