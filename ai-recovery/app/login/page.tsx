@@ -14,8 +14,8 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center #10b981 bg-green-60">
-      <div className="bg-white p-8 rounded shadow-md w-full max-w-sm">
+    <div className="min-h-screen bg-green-200 flex items-center justify-center #10b981 bg-green-60">
+      <div className="bg-green-100 p-8 rounded-lg shadow-md w-full max-w-sm">
         <div className="flex items-center justify-center mb-4">
           <Image src="/logo.svg" alt="Logo" width={48} height={48} className="h-12 w-12" />
           <h1 className="text-2xl font-bold ml-2" style={{ color: '#67B680' }}>Addis Hiwot</h1>

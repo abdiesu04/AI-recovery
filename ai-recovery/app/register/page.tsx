@@ -8,12 +8,13 @@ import {
   CardContent,
   CardHeader,
   Typography,
-  Alert,
+  Alert, 
   AlertTitle,
   IconButton
 } from '@mui/material';
 import { styled, ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
+import MailIcon from '@mui/icons-material/Mail';
 import {
   AccountCircle,
   Lock,
@@ -29,8 +30,9 @@ import logo from '../../public/logo.svg';
 
 const questions = [
   { key: 'username', label: 'Username', description: 'Please enter a unique username for your account.', icon: <AccountCircle color="primary" /> },
+  { key: 'email', label: 'Email', description: ' Please enter a valid email address, example  name@domain.com.', icon: <MailIcon style={{ color: '#8E24AD' }} /> },
+  { key: 'name', label: 'Name', description: 'What is your full name?', icon: <Person s tyle={{ color: '#FFD700' }} /> },
   { key: 'password', label: 'Password', type: 'password', description: 'Enter a strong password to secure your account.', icon: <Lock color="secondary" /> },
-  { key: 'name', label: 'Name', description: 'What is your full name?', icon: <Person style={{ color: '#FFD700' }} /> },
   { key: 'age', label: 'Age', type: 'number', description: 'How old are you?', icon: <Cake style={{ color: '#8E44AD' }} /> },
   { key: 'gender', label: 'Gender', type: 'select', options: ['male', 'female', 'other'], description: 'What is your gender?', icon: <Wc style={{ color: '#E74C3C' }} /> }
 ];
@@ -39,6 +41,7 @@ const theme = createTheme({
   palette: {
     primary: {
       main: '#67B680',
+      
     },
     secondary: {
       main: '#f50057',
@@ -77,7 +80,7 @@ const CustomTextField = styled(TextField)(({ theme }) => ({
 }));
 
 const FormContainer = styled('div')(({ theme }) => ({
-  backgroundColor: '#ffffff',
+  backgroundColor: '67B680',
   padding: '4rem',
   maxWidth: '800px',
   width: '100%',
@@ -87,7 +90,7 @@ const FormContainer = styled('div')(({ theme }) => ({
 }));
 
 const DescriptionBox = styled('div')(({ theme }) => ({
-  backgroundColor: '#ffffff',
+  backgroundColor: '##b8e5e6',
   padding: '1.5rem',
   marginBottom: '1.5rem',
   borderRadius: '16px',
@@ -141,7 +144,7 @@ const Form = () => {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <div className="min-h-screen flex items-center justify-center bg-gray-100 p-8">
+      <div className="min-h-screen flex items-center justify-center bg-green-100 p-8">
         <FormContainer>
           <div className="flex items-center justify-center mb-4">
             <Image src={logo} alt="Logo" width={48} height={48} className="h-12 w-12" />
@@ -160,9 +163,9 @@ const Form = () => {
               Please fill in all the fields before submitting.
             </Alert>
           )}
-          <Card className="mb-4">
+          <Card className="rounded-lg bg-green-100 mb-4">
             <CardContent>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div className="grid  grid-cols-1 sm:grid-cols-2 gap-4">
                 {questions.map((question) => (
                   <div key={question.key}>
                     <CardHeader avatar={<div>{question.icon}</div>} title={question.label} />

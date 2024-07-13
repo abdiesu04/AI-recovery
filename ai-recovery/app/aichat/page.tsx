@@ -25,7 +25,7 @@ const AIPage: React.FC = () => {
             {/* Chat area */}
             <Box className="h-96 overflow-y-auto p-4 bg-gradient-to-b from-gray-800 to-gray-700 rounded-lg"></Box>
             {/* User prompt */}
-            <Box className="mt-4 flex items-center">
+            <Box className="mt-4l flex items-center">
               <TextField
                 variant="outlined"
                 placeholder="User Prompt..."

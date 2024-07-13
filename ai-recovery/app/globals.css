@@ -6,3 +6,18 @@ body {
   @apply bg-green-200 font-sans;
 }
 
+
+
+.neumorphic-card {
+  background: #e0e0e0;
+  border-radius: 12px;
+  box-shadow: 9px 9px 16px #bebebe,
+              -9px -9px 16px #ffffff;
+  transition: all 0.2s ease-in-out;
+}
+
+.neumorphic-card:hover {
+  box-shadow: 5px 5px 10px #bebebe,
+              -5px -5px 10px #ffffff;
+  transform: translateY(-2px);
+}
