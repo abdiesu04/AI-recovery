@@ -32,7 +32,7 @@ class TokenData(BaseModel):
 async def get_user(user_id):
     return {"user_id": 1, "username": "admin"}
 
-def create_access_token(data: dict, expires_delta: timedelta | None = None):
+def create_access_token(data: dict, expires_delta: Union[timedelta, None] = None):
     to_encode = data.dict()
     if expires_delta:
         expire = datetime.utcnow() + expires_delta
@@ -111,6 +111,7 @@ async def login(credential: UserLogin, db: MongoClient = Depends(get_db)):
 @router.post("/register")
 async def register(user: UserBase, db: MongoClient = Depends(get_db)):
     # check if user exists
+    print("sent")
     user_exists =  db["users"].find_one({"username": user.username})
     if user_exists:
         raise HTTPException(

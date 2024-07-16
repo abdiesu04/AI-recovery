@@ -11,7 +11,9 @@ const AIPage: React.FC = () => {
   return (
     <Box className="flex flex-col min-h-screen bg-gradient-to-b from-black to-gray-900">
       <Box className="flex flex-1">
-        <Sidebar />
+        <Sidebar isOpen={false} toggleSidebar={function (): void {
+          throw new Error('Function not implemented.');
+        } } />
         <Box className="flex-1 p-6 text-white">
           <Box className="flex items-center justify-between">
             <Typography variant="h5" className="font-bold">

@@ -1,6 +1,5 @@
-'use client'
+"use client";
 import React, { useState } from 'react';
-import axios from 'axios';
 import {
   Card,
   CardContent,
@@ -16,16 +15,20 @@ import { green } from '@mui/material/colors';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import MoodIcon from '@mui/icons-material/Mood';
 import NaturePeopleIcon from '@mui/icons-material/NaturePeople';
+import { checkin_resp } from "./api"
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 
-const DailyCheckIn = () => {
-  const [progress, setProgress] = useState('');
-  const [feeling, setFeeling] = useState('');
-  const [response, setResponse] = useState('');
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState('');
+const DailyCheckIn: React.FC = () => {
+  const [habit, setHabit] = useState<string>('');
+  const [action, setAction] = useState<string>('');
+  const userId = '6690b520c3501fb2363cf995';
+  const [loading, setLoading] = useState<boolean>(false);
+  const [error, setError] = useState<string>('');
+  const [responseMessage, setResponseMessage] = useState<string>('');
 
   const handleCheckIn = async () => {
-    if (!progress || !feeling) {
+    if (!habit || !action) {
       setError('Both fields are required.');
       return;
     }
@@ -33,11 +36,8 @@ const DailyCheckIn = () => {
     setLoading(true);
     setError('');
     try {
-      const { data } = await axios.post('http://localhost:8000/api/checkin', {
-        user_id: '6690b520c3501fb2363cf995', // Replace with dynamic user ID if necessary
-        message: `Progress: ${progress}, Feeling: ${feeling}`,
-      });
-      setResponse(data.response);
+      const aiResponse = await checkin_resp(userId, habit, action);
+      setResponseMessage(aiResponse); 
     } catch (error) {
       console.error('Error during check-in:', error);
       setError('Failed to send check-in data. Please try again.');
@@ -66,6 +66,8 @@ const DailyCheckIn = () => {
           boxShadow: 5,
           borderRadius: 3,
           textAlign: 'center',
+          maxHeight: '80vh',
+          overflowY: 'auto',
         }}
       >
         <CardContent>
@@ -81,33 +83,33 @@ const DailyCheckIn = () => {
             <NaturePeopleIcon sx={{ color: 'white', fontSize: 32 }} />
           </Avatar>
           <Typography variant="h5" component="div" gutterBottom>
-            Daily Check-in
+            Habit Tracking
           </Typography>
           <TextField
-            label="Progress"
-            value={progress}
-            onChange={(e) => setProgress(e.target.value)}
+            label="Habit"
+            value={habit}
+            onChange={(e) => setHabit(e.target.value)}
             fullWidth
             margin="normal"
             variant="outlined"
             InputProps={{
               startAdornment: <CheckCircleIcon sx={{ mr: 1, color: green[700] }} />,
             }}
-            error={!!error && !progress}
-            helperText={!!error && !progress ? 'Progress is required' : ''}
+            error={!!error && !habit}
+            helperText={!!error && !habit ? 'Habit is required' : ''}
           />
           <TextField
-            label="Feeling"
-            value={feeling}
-            onChange={(e) => setFeeling(e.target.value)}
+            label="Action"
+            value={action}
+            onChange={(e) => setAction(e.target.value)}
             fullWidth
             margin="normal"
             variant="outlined"
             InputProps={{
               startAdornment: <MoodIcon sx={{ mr: 1, color: green[700] }} />,
             }}
-            error={!!error && !feeling}
-            helperText={!!error && !feeling ? 'Feeling is required' : ''}
+            error={!!error && !action}
+            helperText={!!error && !action ? 'Action is required' : ''}
           />
           {error && (
             <Alert severity="error" sx={{ mt: 2 }}>
@@ -130,11 +132,9 @@ const DailyCheckIn = () => {
               {loading ? <CircularProgress size={24} sx={{ color: 'white' }} /> : 'Check In'}
             </Button>
           </Box>
-          {response && (
-            <Box sx={{ mt: 2, p: 2, backgroundColor: green[100], borderRadius: 2 }}>
-              <Typography variant="body1" component="p">
-                {response}
-              </Typography>
+          {responseMessage && (
+            <Box sx={{ mt: 2, p: 2, backgroundColor: green[100], borderRadius: 2, textAlign: 'left' }}>
+              <ReactMarkdown remarkPlugins={[remarkGfm]}>{responseMessage}</ReactMarkdown>
             </Box>
           )}
         </CardContent>

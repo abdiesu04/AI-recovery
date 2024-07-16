@@ -1,6 +1,5 @@
-'use client'
+"use client";
 import React, { useState } from 'react';
-import axios from 'axios';
 import {
   Card,
   CardContent,
@@ -13,17 +12,22 @@ import {
   Alert,
 } from '@mui/material';
 import { green } from '@mui/material/colors';
-import AssignmentIcon from '@mui/icons-material/Assignment';
-import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import MoodIcon from '@mui/icons-material/Mood';
+import NaturePeopleIcon from '@mui/icons-material/NaturePeople';
+import { habit_check } from "./api";
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 
-const HabitTracking = () => {
-  const [habit, setHabit] = useState('');
-  const [action, setAction] = useState('');
-  const [response, setResponse] = useState('');
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState('');
+const HabitTracking: React.FC = () => {
+  const [habit, setHabit] = useState<string>('');
+  const [action, setAction] = useState<string>('');
+  const userId = '6690b520c3501fb2363cf995';
+  const [loading, setLoading] = useState<boolean>(false);
+  const [error, setError] = useState<string>('');
+  const [responseMessage, setResponseMessage] = useState<string>('');
 
-  const handleTrackHabit = async () => {
+  const handleCheckIn = async () => {
     if (!habit || !action) {
       setError('Both fields are required.');
       return;
@@ -32,17 +36,29 @@ const HabitTracking = () => {
     setLoading(true);
     setError('');
     try {
-      const { data } = await axios.post('http://localhost:8000/api/chat', {
-        user_id: 'user123', // Replace with dynamic user ID if necessary
-        message: `Habit: ${habit}, Action: ${action}`,
-      });
-      setResponse(data.response);
+      const aiResponse = await habit_check(userId, habit, action);
+      setResponseMessage(aiResponse); 
     } catch (error) {
-      console.error('Error tracking habit:', error);
-      setError('Failed to send habit data. Please try again.');
+      console.error('Error during check-in:', error);
+      setError('Failed to send check-in data. Please try again.');
     } finally {
       setLoading(false);
     }
+  };
+
+  const renderResponseMessage = () => {
+    const messageWithLineBreaks = responseMessage.replace(/\n\n/g, "\n<br>\n");
+
+    return (
+      <ReactMarkdown
+        remarkPlugins={[remarkGfm]}
+        components={{
+          br: ({ node, ...props }) => <br {...props} />
+        }}
+      >
+        {messageWithLineBreaks}
+      </ReactMarkdown>
+    );
   };
 
   return (
@@ -65,6 +81,8 @@ const HabitTracking = () => {
           boxShadow: 5,
           borderRadius: 3,
           textAlign: 'center',
+          maxHeight: '80vh',
+          overflowY: 'auto',
         }}
       >
         <CardContent>
@@ -77,7 +95,7 @@ const HabitTracking = () => {
               mb: 2,
             }}
           >
-            <AssignmentIcon sx={{ color: 'white', fontSize: 32 }} />
+            <NaturePeopleIcon sx={{ color: 'white', fontSize: 32 }} />
           </Avatar>
           <Typography variant="h5" component="div" gutterBottom>
             Habit Tracking
@@ -90,20 +108,20 @@ const HabitTracking = () => {
             margin="normal"
             variant="outlined"
             InputProps={{
-              startAdornment: <EmojiEventsIcon sx={{ mr: 1, color: green[700] }} />,
+              startAdornment: <CheckCircleIcon sx={{ mr: 1, color: green[700] }} />,
             }}
             error={!!error && !habit}
             helperText={!!error && !habit ? 'Habit is required' : ''}
           />
           <TextField
-            label="What have you done today?"
+            label="Action"
             value={action}
             onChange={(e) => setAction(e.target.value)}
             fullWidth
             margin="normal"
             variant="outlined"
             InputProps={{
-              startAdornment: <EmojiEventsIcon sx={{ mr: 1, color: green[700] }} />,
+              startAdornment: <MoodIcon sx={{ mr: 1, color: green[700] }} />,
             }}
             error={!!error && !action}
             helperText={!!error && !action ? 'Action is required' : ''}
@@ -117,7 +135,7 @@ const HabitTracking = () => {
             <Button
               variant="contained"
               color="primary"
-              onClick={handleTrackHabit}
+              onClick={handleCheckIn}
               sx={{
                 backgroundColor: green[700],
                 '&:hover': {
@@ -126,14 +144,12 @@ const HabitTracking = () => {
                 width: '100%',
               }}
             >
-              {loading ? <CircularProgress size={24} sx={{ color: 'white' }} /> : 'Track Habit'}
+              {loading ? <CircularProgress size={24} sx={{ color: 'white' }} /> : 'Check In'}
             </Button>
           </Box>
-          {response && (
-            <Box sx={{ mt: 2, p: 2, backgroundColor: green[100], borderRadius: 2 }}>
-              <Typography variant="body1" component="p">
-                {response}
-              </Typography>
+          {responseMessage && (
+            <Box sx={{ mt: 2, p: 2, backgroundColor: green[100], borderRadius: 2, textAlign: 'left' }}>
+              {renderResponseMessage()}
             </Box>
           )}
         </CardContent>

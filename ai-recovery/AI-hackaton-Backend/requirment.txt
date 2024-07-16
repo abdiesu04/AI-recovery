@@ -1,5 +1,5 @@
 fastapi
-uvcorn
+uvicorn
 python-dotenv
 pymongo[srv]
 motor

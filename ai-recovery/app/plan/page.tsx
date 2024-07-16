@@ -16,9 +16,9 @@ const PersonalizedRecoveryPlan = () => {
       setLoading(true);
       try {
         const response = await fetchPersonalizedRecoveryPlan();
-        console.log('API Response:', response); // Debugging line to check the API response
+        // console.log('API Response:', response); 
         const data = JSON.parse(response);
-        console.log('Parsed Data:', data); // Debugging line to check the parsed data
+        // console.log('Parsed Data:', data); 
         setRecoveryPlan(data.recovery_plan);
       } catch (error) {
         console.error('Error fetching recovery plan:', error);

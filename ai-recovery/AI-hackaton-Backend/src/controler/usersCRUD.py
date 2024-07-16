@@ -1,5 +1,6 @@
 from typing import List
 from fastapi import HTTPException, status
+import pymongo
 from models.users import User
 from database.database import get_db
 from bson.objectid import ObjectId

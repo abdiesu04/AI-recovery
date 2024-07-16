@@ -9,8 +9,8 @@ from auth.auth import router as auth_router
 from routes.users import router as users_router
 from fastapi.middleware.cors import CORSMiddleware
 
-load_dotenv() #load enviromental variables
-DB_URI = os.getenv("DB_URI")
+load_dotenv() #load environmental variables
+DB_URI = os.getenv("MONGO_URI")
 print(DB_URI)
 
 app = FastAPI()
@@ -29,6 +29,7 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
 # Add your routes here
 app.include_router(auth_router)
 app.include_router(users_router)

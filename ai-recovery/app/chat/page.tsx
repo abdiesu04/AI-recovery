@@ -1,32 +1,38 @@
-'use client'
+"use client";
+
 import React, { useState } from 'react';
 import { Box, TextField, Button, Paper, List, ListItem, Typography } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import { useMediaQuery } from '@mui/material';
 import { sendMessage } from './api';
-import SendIcon from '@mui/icons-material/Send';
 import { green } from '@mui/material/colors';
+import EmojiObjectsIcon from '@mui/icons-material/EmojiObjects';
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
+
+interface Message {
+  role: 'user' | 'assistant';
+  content: string;
+}
 
 const initialSuggestionPrompts = [
   "Hi! I am feeling dizzy 😊",
   "How can I stop smoking? 🚭",
-  "Is Khat bad? 🤔",
   "Tell me about the cons of smoking ⚠️",
-  "What does smoking result in? 🚭",
 ];
 
-const ChatWithAI = () => {
-  const [messages, setMessages] = useState([]);
-  const [input, setInput] = useState('');
-  const [loading, setLoading] = useState(false);
+const ChatWithAI: React.FC = () => {
+  const [messages, setMessages] = useState<Message[]>([]);
+  const [input, setInput] = useState<string>('');
+  const [loading, setLoading] = useState<boolean>(false);
   const userId = "6690b520c3501fb2363cf995"; // Replace with actual user ID
-  const [suggestionPrompts, setSuggestionPrompts] = useState(initialSuggestionPrompts);
+  const [suggestionPrompts, setSuggestionPrompts] = useState<string[]>(initialSuggestionPrompts);
 
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
-  const handleSend = async (message) => {
-    const newMessages = [...messages, { role: 'user', content: message }];
+  const handleSend = async (message: string) => {
+    const newMessages: Message[] = [...messages, { role: 'user', content: message }];
     setMessages(newMessages);
     setLoading(true);
 
@@ -45,7 +51,7 @@ const ChatWithAI = () => {
     setInput('');
   };
 
-  const handleSuggestionClick = (prompt) => {
+  const handleSuggestionClick = (prompt: string) => {
     handleSend(prompt);
   };
 
@@ -53,11 +59,9 @@ const ChatWithAI = () => {
     <Box sx={{
       display: 'flex',
       flexDirection: 'column',
-      height: '100vh',
-      background: 'white',
+      height: '100%',
+      background: 'linear-gradient(135deg, #a8e6cf 0%, #dcedc1 100%)',
       p: 2,
-      borderRadius: 2,
-      boxShadow: 2,
     }}>
       <Box sx={{
         display: 'flex',
@@ -89,21 +93,20 @@ const ChatWithAI = () => {
           </Paper>
         ))}
       </Box>
-      <Box
-        sx={{
+      <div
+        style={{
           flexGrow: 1,
-          padding: '16px', // Adjust padding as needed
+          padding: '16px', 
           overflow: 'auto',
-          background: 'white',
-          borderRadius: '8px', // Adjust border radius as needed
-          boxShadow: 2,
+          background: 'linear-gradient(135deg, #a8e6cf 0%, #dcedc1 100%)',
+          borderRadius: '8px', 
         }}
       >
         <List>
           {messages.map((message, index) => (
             <ListItem key={index} sx={{ justifyContent: message.role === 'user' ? 'flex-end' : 'flex-start' }}>
               <Paper sx={{ p: 1, bgcolor: message.role === 'user' ? green[500] : green[300], color: message.role === 'user' ? theme.palette.success.contrastText : theme.palette.secondary.contrastText, borderRadius: 2 }}>
-                <Typography>{message.content}</Typography>
+                <ReactMarkdown remarkPlugins={[remarkGfm]}>{message.content}</ReactMarkdown>
               </Paper>
             </ListItem>
           ))}
@@ -115,8 +118,8 @@ const ChatWithAI = () => {
             </ListItem>
           )}
         </List>
-      </Box>
-      <Box sx={{ display: 'flex', p: 2, bgcolor: green[200], borderRadius: 2, boxShadow: 2 }}>
+      </div>
+      <Box sx={{ display: 'flex', p: 2, bgcolor: green[200], borderRadius: 2 }}>
         <TextField
           fullWidth
           variant="outlined"
@@ -129,7 +132,7 @@ const ChatWithAI = () => {
               handleSend(input);
             }
           }}
-          sx={{ bgcolor: 'white', '& .MuiOutlinedInput-root': { borderRadius: 20 }, '& .MuiOutlinedInput-input': { color: theme.palette.primary.dark } }}
+          sx={{ bgcolor: green[200], '& .MuiOutlinedInput-root': { borderRadius: 20 }, '& .MuiOutlinedInput-input': { color: theme.palette.primary.dark } }}
         />
         <Button
           variant="contained"
@@ -138,7 +141,7 @@ const ChatWithAI = () => {
           disabled={loading || input.trim() === ''}
           sx={{ bgcolor: green[700], ml: 1, borderRadius: 20, '&:hover': { bgcolor: green[800] } }}
         >
-          <SendIcon sx={{ fontSize: 20, marginRight: 1 }} />
+          <EmojiObjectsIcon sx={{ fontSize: 20, marginRight: 1 }} />
           Send
         </Button>
       </Box>
@@ -147,3 +150,4 @@ const ChatWithAI = () => {
 };
 
 export default ChatWithAI;
+
