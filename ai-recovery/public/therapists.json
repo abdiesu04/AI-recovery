@@ -1,0 +1,95 @@
+{
+    "therapists": [
+      {
+        "id": "1",
+        "name": "Dr. John Doe",
+        "specialization": "Addiction Recovery",
+        "description": "Specializes in addiction recovery and mental health.",
+        "rating": 4.5,
+        "availability": true,
+        "profile": {
+          "experience": "10 years",
+          "qualifications": ["PhD in Psychology", "Certified Addiction Specialist"],
+          "languages": ["English", "Spanish"],
+          "photo_url": "https://randomuser.me/api/portraits/men/1.jpg"
+        },
+        "reviews": [
+          { "user_id": "101", "username": "Alice", "comment": "Excellent therapist!" },
+          { "user_id": "102", "username": "Bob", "comment": "Very helpful and understanding." }
+        ]
+      },
+      {
+        "id": "2",
+        "name": "Dr. Jane Smith",
+        "specialization": "Trauma Therapy",
+        "description": "Expert in trauma therapy and PTSD treatment.",
+        "rating": 4.8,
+        "availability": true,
+        "profile": {
+          "experience": "8 years",
+          "qualifications": ["MA in Clinical Psychology", "Certified Trauma Therapist"],
+          "languages": ["English", "French"],
+          "photo_url": "https://randomuser.me/api/portraits/women/2.jpg"
+        },
+        "reviews": [
+          { "user_id": "103", "username": "Charlie", "comment": "Helped me a lot with my trauma." },
+          { "user_id": "104", "username": "Dave", "comment": "Very compassionate and skilled." }
+        ]
+      },
+      {
+        "id": "3",
+        "name": "Dr. Emily Johnson",
+        "specialization": "Family Therapy",
+        "description": "Provides family therapy sessions and counseling.",
+        "rating": 4.6,
+        "availability": true,
+        "profile": {
+          "experience": "12 years",
+          "qualifications": ["PhD in Family Therapy", "Certified Family Therapist"],
+          "languages": ["English"],
+          "photo_url": "https://randomuser.me/api/portraits/women/3.jpg"
+        },
+        "reviews": [
+          { "user_id": "105", "username": "Eve", "comment": "Great with family counseling." },
+          { "user_id": "106", "username": "Frank", "comment": "Highly recommend for family therapy." }
+        ]
+      },
+      {
+        "id": "4",
+        "name": "Dr. Michael Brown",
+        "specialization": "Cognitive Behavioral Therapy",
+        "description": "Specialist in cognitive behavioral therapy for anxiety and depression.",
+        "rating": 4.7,
+        "availability": true,
+        "profile": {
+          "experience": "7 years",
+          "qualifications": ["MA in Cognitive Behavioral Therapy", "Certified CBT Specialist"],
+          "languages": ["English", "German"],
+          "photo_url": "https://randomuser.me/api/portraits/men/4.jpg"
+        },
+        "reviews": [
+          { "user_id": "107", "username": "Grace", "comment": "Effective CBT sessions." },
+          { "user_id": "108", "username": "Hank", "comment": "Very knowledgeable and supportive." }
+        ]
+      },
+      {
+        "id": "5",
+        "name": "Dr. Sarah Davis",
+        "specialization": "Child Therapy",
+        "description": "Provides therapy sessions for children and adolescents.",
+        "rating": 4.9,
+        "availability": true,
+        "profile": {
+          "experience": "9 years",
+          "qualifications": ["PhD in Child Psychology", "Certified Child Therapist"],
+          "languages": ["English"],
+          "photo_url": "https://randomuser.me/api/portraits/women/5.jpg"
+        },
+        "reviews": [
+          { "user_id": "109", "username": "Ivy", "comment": "Great with children." },
+          { "user_id": "110", "username": "Jack", "comment": "Helped my child a lot." }
+        ]
+      }
+    ]
+  }
+  

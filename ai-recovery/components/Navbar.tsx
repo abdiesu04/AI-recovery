@@ -1,4 +1,4 @@
-'use client'
+'use client';
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { AppBar, Toolbar, Typography, IconButton, Drawer, List, ListItem, ListItemText, styled } from '@mui/material';
@@ -49,9 +49,11 @@ const Navbar: React.FC = () => {
     <StyledDrawer role="presentation" onClick={toggleDrawer(false)} onKeyDown={toggleDrawer(false)}>
       <List>
         {['Dashboard', 'Therapists', 'Community', 'Resources', 'Sign In'].map((text) => (
-          <ListItem button key={text}>
-            <StyledListItemText primary={text} />
-          </ListItem>
+          <Link href={`/${text.toLowerCase().replace(' ', '')}`} key={text} passHref>
+            <ListItem button component="a">
+              <StyledListItemText primary={text} />
+            </ListItem>
+          </Link>
         ))}
       </List>
     </StyledDrawer>
@@ -69,31 +71,13 @@ const Navbar: React.FC = () => {
           </div>
         </Link>
         <nav className="ml-auto hidden md:flex gap-6">
-          <Link href="/dashboard" passHref>
-            <StyledLink variant="body1">
-              Dashboard
-            </StyledLink>
-          </Link>
-          <Link href="/therapists" passHref>
-            <StyledLink variant="body1">
-              Therapists
-            </StyledLink>
-          </Link>
-          <Link href="/community" passHref>
-            <StyledLink variant="body1">
-              Community
-            </StyledLink>
-          </Link>
-          <Link href="/resources" passHref>
-            <StyledLink variant="body1">
-              Resources
-            </StyledLink>
-          </Link>
-          <Link href="/signin" passHref>
-            <StyledLink variant="body1">
-              Sign In
-            </StyledLink>
-          </Link>
+          {['Dashboard', 'Therapists', 'Community', 'Resources', 'Sign In'].map((text) => (
+            <Link href={`/${text.toLowerCase().replace(' ', '')}`} key={text} passHref>
+              <StyledLink variant="body1" component="a">
+                {text}
+              </StyledLink>
+            </Link>
+          ))}
         </nav>
         <StyledIconButton edge="end" className="md:hidden ml-auto" onClick={toggleDrawer(true)}>
           <MenuIcon />

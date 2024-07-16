@@ -1,11 +1,10 @@
 'use client'
-
 import React, { useEffect, useState } from 'react';
 import { Button } from '@mui/material';
 import FeaturesCard from '@/components/FeaturesCard';
 import Link from 'next/link';
-import 'animate.css'; 
-import styles from './landingPage.module.css'; 
+import 'animate.css';
+import styles from './landingPage.module.css';
 import Image from 'next/image';
 
 const LandingPage: React.FC = () => {
@@ -52,7 +51,6 @@ const LandingPage: React.FC = () => {
                   style={{ backgroundColor: '#87CEEB', color: '#000' }}
                   className="w-full md:w-auto"
                   size="large"
-                  component="a"
                 >
                   Get Started
                 </Button>
@@ -69,13 +67,13 @@ const LandingPage: React.FC = () => {
             </div>
           </div>
           <div className={styles.imageContainer}>
-            <Image
+            {/* <Image
               src="/MindfulHomePage.png"
               alt="Recovery Journey"
               width={340}
               height={340}
               className={styles.image}
-            />
+            /> */}
           </div>
         </div>
       </div>

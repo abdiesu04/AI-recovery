@@ -21,3 +21,12 @@ body {
               -5px -5px 10px #ffffff;
   transform: translateY(-2px);
 }
+
+
+.equal-height {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  margin-bottom: 2rem;
+}

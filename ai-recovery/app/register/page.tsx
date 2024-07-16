@@ -10,7 +10,8 @@ import {
   Typography,
   Alert, 
   AlertTitle,
-  IconButton
+  IconButton,
+  Snackbar
 } from '@mui/material';
 import { styled, ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -30,8 +31,8 @@ import logo from '../../public/logo.svg';
 
 const questions = [
   { key: 'username', label: 'Username', description: 'Please enter a unique username for your account.', icon: <AccountCircle color="primary" /> },
-  { key: 'email', label: 'Email', description: ' Please enter a valid email address, example  name@domain.com.', icon: <MailIcon style={{ color: '#8E24AD' }} /> },
-  { key: 'name', label: 'Name', description: 'What is your full name?', icon: <Person s tyle={{ color: '#FFD700' }} /> },
+  { key: 'email', label: 'Email', description: 'Please enter a valid email address, example name@domain.com.', icon: <MailIcon style={{ color: '#8E24AD' }} /> },
+  { key: 'name', label: 'Name', description: 'What is your full name?', icon: <Person style={{ color: '#FFD700' }} /> },
   { key: 'password', label: 'Password', type: 'password', description: 'Enter a strong password to secure your account.', icon: <Lock color="secondary" /> },
   { key: 'age', label: 'Age', type: 'number', description: 'How old are you?', icon: <Cake style={{ color: '#8E44AD' }} /> },
   { key: 'gender', label: 'Gender', type: 'select', options: ['male', 'female', 'other'], description: 'What is your gender?', icon: <Wc style={{ color: '#E74C3C' }} /> }
@@ -41,7 +42,6 @@ const theme = createTheme({
   palette: {
     primary: {
       main: '#67B680',
-      
     },
     secondary: {
       main: '#f50057',
@@ -104,6 +104,13 @@ const DescriptionBox = styled('div')(({ theme }) => ({
 const Form = () => {
   const [formData, setFormData] = useState<{ [key: string]: any }>({});
   const [openAlert, setOpenAlert] = useState(false);
+  const [snackbarOpen, setSnackbarOpen] = useState(false);
+  const [snackbarMessage, setSnackbarMessage] = useState("");
+  const [snackbarSeverity, setSnackbarSeverity] = useState("success");
+
+  const handleSnackbarClose = () => {
+    setSnackbarOpen(false);
+  };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -133,11 +140,16 @@ const Form = () => {
     } else {
       setOpenAlert(false);
       try {
-        const response = await axios.post('http://localhost:8000/submit', formData);
+        const response = await axios.post('http://localhost:8000/auth/register', formData);
         console.log(response.data);
+        setSnackbarMessage("Registration successful!");
+        setSnackbarSeverity("success");
       } catch (error) {
         console.error(error);
+        setSnackbarMessage("Registration failed. Please try again.");
+        setSnackbarSeverity("error");
       }
+      setSnackbarOpen(true);
     }
   };
 
@@ -165,7 +177,7 @@ const Form = () => {
           )}
           <Card className="rounded-lg bg-green-100 mb-4">
             <CardContent>
-              <div className="grid  grid-cols-1 sm:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {questions.map((question) => (
                   <div key={question.key}>
                     <CardHeader avatar={<div>{question.icon}</div>} title={question.label} />
@@ -274,6 +286,16 @@ const Form = () => {
           </Card>
         </FormContainer>
       </div>
+      <Snackbar
+        open={snackbarOpen}
+        autoHideDuration={6000}
+        onClose={handleSnackbarClose}
+        anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+      >
+        <Alert onClose={handleSnackbarClose} severity={snackbarSeverity} sx={{ width: '100%' }}>
+          {snackbarMessage}
+        </Alert>
+      </Snackbar>
     </ThemeProvider>
   );
 };
