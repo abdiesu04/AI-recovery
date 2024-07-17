@@ -7,8 +7,6 @@ import { useMediaQuery } from '@mui/material';
 import { sendMessage } from './api';
 import { green } from '@mui/material/colors';
 import EmojiObjectsIcon from '@mui/icons-material/EmojiObjects';
-import ReactMarkdown from 'react-markdown';
-import remarkGfm from 'remark-gfm';
 
 interface Message {
   role: 'user' | 'assistant';
@@ -53,6 +51,16 @@ const ChatWithAI: React.FC = () => {
 
   const handleSuggestionClick = (prompt: string) => {
     handleSend(prompt);
+  };
+
+  const formatMessageContent = (content: string) => {
+    // Replace newlines with <br />
+    let formattedContent = content.replace(/\n/g, '<br />');
+    // Replace **something** with <b>something</b>
+    formattedContent = formattedContent.replace(/\*\*(.*?)\*\*/g, '<b>$1</b>');
+    // Replace *something with • something
+    formattedContent = formattedContent.replace(/\*(\w+)/g, '• $1');
+    return formattedContent;
   };
 
   return (
@@ -106,7 +114,10 @@ const ChatWithAI: React.FC = () => {
           {messages.map((message, index) => (
             <ListItem key={index} sx={{ justifyContent: message.role === 'user' ? 'flex-end' : 'flex-start' }}>
               <Paper sx={{ p: 1, bgcolor: message.role === 'user' ? green[500] : green[300], color: message.role === 'user' ? theme.palette.success.contrastText : theme.palette.secondary.contrastText, borderRadius: 2 }}>
-                <ReactMarkdown remarkPlugins={[remarkGfm]}>{message.content}</ReactMarkdown>
+                <Typography
+                  variant="body1"
+                  dangerouslySetInnerHTML={{ __html: formatMessageContent(message.content) }}
+                />
               </Paper>
             </ListItem>
           ))}
@@ -150,4 +161,3 @@ const ChatWithAI: React.FC = () => {
 };
 
 export default ChatWithAI;
-

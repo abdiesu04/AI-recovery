@@ -1,4 +1,5 @@
 "use client";
+
 import React, { useState } from 'react';
 import {
   Card,
@@ -15,20 +16,20 @@ import { green } from '@mui/material/colors';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import MoodIcon from '@mui/icons-material/Mood';
 import NaturePeopleIcon from '@mui/icons-material/NaturePeople';
-import { checkin_resp } from "./api"
+import { checkin_resp } from './api';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 
 const DailyCheckIn: React.FC = () => {
-  const [habit, setHabit] = useState<string>('');
-  const [action, setAction] = useState<string>('');
+  const [progress, setProgress] = useState<string>('');
+  const [feeling, setFeeling] = useState<string>('');
   const userId = '6690b520c3501fb2363cf995';
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string>('');
   const [responseMessage, setResponseMessage] = useState<string>('');
 
   const handleCheckIn = async () => {
-    if (!habit || !action) {
+    if (!progress || !feeling) {
       setError('Both fields are required.');
       return;
     }
@@ -36,8 +37,8 @@ const DailyCheckIn: React.FC = () => {
     setLoading(true);
     setError('');
     try {
-      const aiResponse = await checkin_resp(userId, habit, action);
-      setResponseMessage(aiResponse); 
+      const aiResponse = await checkin_resp(userId, progress, feeling);
+      setResponseMessage(aiResponse); // Update to set response message correctly
     } catch (error) {
       console.error('Error during check-in:', error);
       setError('Failed to send check-in data. Please try again.');
@@ -83,33 +84,33 @@ const DailyCheckIn: React.FC = () => {
             <NaturePeopleIcon sx={{ color: 'white', fontSize: 32 }} />
           </Avatar>
           <Typography variant="h5" component="div" gutterBottom>
-            Habit Tracking
+            Daily Check-in
           </Typography>
           <TextField
-            label="Habit"
-            value={habit}
-            onChange={(e) => setHabit(e.target.value)}
+            label="Progress"
+            value={progress}
+            onChange={(e) => setProgress(e.target.value)}
             fullWidth
             margin="normal"
             variant="outlined"
             InputProps={{
               startAdornment: <CheckCircleIcon sx={{ mr: 1, color: green[700] }} />,
             }}
-            error={!!error && !habit}
-            helperText={!!error && !habit ? 'Habit is required' : ''}
+            error={!!error && !progress}
+            helperText={!!error && !progress ? 'Progress is required' : ''}
           />
           <TextField
-            label="Action"
-            value={action}
-            onChange={(e) => setAction(e.target.value)}
+            label="Feeling"
+            value={feeling}
+            onChange={(e) => setFeeling(e.target.value)}
             fullWidth
             margin="normal"
             variant="outlined"
             InputProps={{
               startAdornment: <MoodIcon sx={{ mr: 1, color: green[700] }} />,
             }}
-            error={!!error && !action}
-            helperText={!!error && !action ? 'Action is required' : ''}
+            error={!!error && !feeling}
+            helperText={!!error && !feeling ? 'Feeling is required' : ''}
           />
           {error && (
             <Alert severity="error" sx={{ mt: 2 }}>
