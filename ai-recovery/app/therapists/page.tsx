@@ -1,7 +1,7 @@
 'use client'
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { Container, Typography, Box, Card, CardContent } from '@material-ui/core';
+import { Container, Card, CardContent, Typography, Button, Avatar, Box } from '@mui/material';
 import { People, Visibility, SentimentSatisfied } from '@mui/icons-material';
 import TestimonyCard from './TestimonyCard'
 import TherapistCard from './TherapistCard';

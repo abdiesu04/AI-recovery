@@ -13,6 +13,7 @@ const LoginPage = () => {
   const [snackbarOpen, setSnackbarOpen] = useState(false);
   const [snackbarMessage, setSnackbarMessage] = useState("");
   const [snackbarSeverity, setSnackbarSeverity] = useState("success");
+  const [loginSuccess, setLoginSuccess] = useState(false);
 
   const handleSnackbarClose = () => {
     setSnackbarOpen(false);
@@ -39,7 +40,8 @@ const LoginPage = () => {
       localStorage.setItem("token", response.data.access_token); // Save to local storage
       setSnackbarMessage("Login successful!");
       setSnackbarSeverity("success");
-    } catch (error: any) {
+      setLoginSuccess(true); // Set login success to true
+    } catch (error) {
       console.log(error.response.data);
       setSnackbarMessage("Login failed. Please try again.");
       setSnackbarSeverity("error");
@@ -99,7 +101,6 @@ const LoginPage = () => {
             />
           </div>
           <button
-            onSubmit={handleSubmit}
             type="submit"
             className="w-full bg-green-500 text-white py-2 rounded-lg hover:bg-green-600 focus:outline-none focus:ring focus:ring-green-500"
           >
@@ -113,6 +114,15 @@ const LoginPage = () => {
             </Link>
           </div>
         </form>
+        {loginSuccess && (
+          <div className="text-center mt-4">
+            <Link href="/home">
+              <span className="text-green-500 hover:underline">
+              Go to Home
+              </span>
+            </Link>
+          </div>
+        )}
       </div>
       <Snackbar
         open={snackbarOpen}

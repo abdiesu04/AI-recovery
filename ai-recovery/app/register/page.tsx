@@ -27,17 +27,13 @@ import {
 } from '@mui/icons-material';
 import axios from 'axios';
 import Image from 'next/image';
+import Link from 'next/link'; // Added import for Link component
 import logo from '../../public/logo.svg'; 
 
 const questions = [
   { key: 'username', label: 'Username', description: 'Please enter a unique username for your account.', icon: <AccountCircle color="primary" /> },
-<<<<<<< Updated upstream
-  { key: 'email', label: 'Email', description: 'Please enter a valid email address, example name@domain.com.', icon: <MailIcon style={{ color: '#8E24AD' }} /> },
-  { key: 'name', label: 'Name', description: 'What is your full name?', icon: <Person style={{ color: '#FFD700' }} /> },
-=======
   { key: 'email', label: 'Email', description: ' Please enter a valid email address, example name@domain.com.', icon: <MailIcon style={{ color: '#8E24AD' }} /> },
-  { key: 'name', label: 'Name', description: 'What is your full name?', icon: <Person style={{ color: '#FFD700' }} /> }, // Fixed the typo in style property
->>>>>>> Stashed changes
+  { key: 'name', label: 'Name', description: 'What is your full name?', icon: <Person style={{ color: '#FFD700' }} /> },
   { key: 'password', label: 'Password', type: 'password', description: 'Enter a strong password to secure your account.', icon: <Lock color="secondary" /> },
   { key: 'age', label: 'Age', type: 'number', description: 'How old are you?', icon: <Cake style={{ color: '#8E44AD' }} /> },
   { key: 'gender', label: 'Gender', type: 'select', options: ['male', 'female', 'other'], description: 'What is your gender?', icon: <Wc style={{ color: '#E74C3C' }} /> }
@@ -85,7 +81,7 @@ const CustomTextField = styled(TextField)(({ theme }) => ({
 }));
 
 const FormContainer = styled('div')(({ theme }) => ({
-  backgroundColor: '#67B680', // Hex color codes should start with #
+  backgroundColor: '#ffffff', // Set the background color to white
   padding: '4rem',
   maxWidth: '800px',
   width: '100%',
@@ -112,6 +108,7 @@ const Form = () => {
   const [snackbarOpen, setSnackbarOpen] = useState(false);
   const [snackbarMessage, setSnackbarMessage] = useState("");
   const [snackbarSeverity, setSnackbarSeverity] = useState("success");
+  const [registrationSuccess, setRegistrationSuccess] = useState(false); // State to track registration success
 
   const handleSnackbarClose = () => {
     setSnackbarOpen(false);
@@ -131,7 +128,6 @@ const Form = () => {
     const newArray = [...(formData[key] || []), ''];
     setFormData({ ...formData, [key]: newArray });
   };
-
   const handleRemoveField = (key: string, index: number) => {
     const newArray = [...(formData[key] || [])];
     newArray.splice(index, 1);
@@ -145,14 +141,11 @@ const Form = () => {
     } else {
       setOpenAlert(false);
       try {
-<<<<<<< Updated upstream
         const response = await axios.post('http://localhost:8000/auth/register', formData);
-=======
-        const response = await axios.post('http://localhost:8000/register', formData);
->>>>>>> Stashed changes
         console.log(response.data);
         setSnackbarMessage("Registration successful!");
         setSnackbarSeverity("success");
+        setRegistrationSuccess(true); // Set registration success to true on successful registration
       } catch (error) {
         console.error(error);
         setSnackbarMessage("Registration failed. Please try again.");
@@ -184,8 +177,7 @@ const Form = () => {
               Please fill in all the fields before submitting.
             </Alert>
           )}
-          <Card className="rounded-lg bg-green-100 mb-4">
-<<<<<<< Updated upstream
+          <Card className="rounded-lg bg-white mb-4">
             <CardContent>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {questions.map((question) => (
@@ -294,132 +286,26 @@ const Form = () => {
               </Button>
             </CardContent>
           </Card>
-=======
-  <CardContent>
-    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-      {questions.map((question) => (
-        <div key={question.key}>
-          <CardHeader avatar={<div>{question.icon}</div>} title={question.label} />
-          <Typography variant="body2" className="mb-4">{question.description}</Typography>
-          <CustomTextField
-            label={question.label}
-            variant="outlined"
-            fullWidth
-            name={question.key}
-            type={question.type || 'text'}
-            value={formData[question.key] || ''}
-            onChange={handleChange}
-            select={question.type === 'select'}
-          >
-            {question.type === 'select' && question.options?.map((option) => (
-              <MenuItem key={option} value={option}>
-                {option}
-              </MenuItem>
-            ))}
-          </CustomTextField>
-        </div>
-      ))}
-    </div>
-    <div className="mt-4">
-      <Typography variant="h6">Hobbies</Typography>
-      {formData.hobbies?.map((hobby: string, index: number) => (
-        <div key={index} className="flex items-center mb-2">
-          <CustomTextField
-            label={`Hobby ${index + 1}`}
-            variant="outlined"
-            fullWidth
-            value={hobby}
-            onChange={(e) => handleArrayChange('hobbies', index, e.target.value)}
-          />
-          <IconButton onClick={() => handleRemoveField('hobbies', index)}>
-            <Delete color="secondary" />
-          </IconButton>
-        </div>
-      ))}
-      <Button
-        variant="outlined"
-        color="primary"
-        fullWidth
-        onClick={() => handleAddField('hobbies')}
-        startIcon={<Add />}
-      >
-        Add Hobby
-      </Button>
-    </div>
-    <div className="mt-4">
-      <Typography variant="h6">Triggers</Typography>
-      {formData.triggers?.map((trigger: string, index: number) => (
-        <div key={index} className="flex items-center mb-2">
-          <CustomTextField
-            label={`Trigger ${index + 1}`}
-            variant="outlined"
-            fullWidth
-            value={trigger}
-            onChange={(e) => handleArrayChange('triggers', index, e.target.value)}
-          />
-          <IconButton onClick={() => handleRemoveField('triggers', index)}>
-            <Delete color="secondary" />
-          </IconButton>
-        </div>
-      ))}
-      <Button
-        variant="outlined"
-        color="primary"
-        fullWidth
-        onClick={() => handleAddField('triggers')}
-        startIcon={<Add />}
-      >
-        Add Trigger
-      </Button>
-    </div>
-    <div className="mt-4">
-      <Typography variant="h6">Solutions Tried</Typography>
-      {formData.solutions_tried?.map((solution: string, index: number) => (
-        <div key={index} className="flex items-center mb-2">
-          <CustomTextField
-            label={`Solution ${index + 1}`}
-            variant="outlined"
-            fullWidth
-            value={solution}
-            onChange={(e) => handleArrayChange('solutions_tried', index, e.target.value)}
-          />
-          <IconButton onClick={() => handleRemoveField('solutions_tried', index)}>
-            <Delete color="secondary" />
-          </IconButton>
-        </div>
-      ))}
-      <Button
-        variant="outlined"
-        color="primary"
-        fullWidth
-        onClick={() => handleAddField('solutions_tried')}
-        startIcon={<Add />}
-      >
-        Add Solution
-      </Button>
-    </div>
-    <Button
-      variant="contained"
-      color="primary"
-      fullWidth
-      onClick={handleSubmit}
-      className="mt-4"
-    >
-      Submit
-    </Button>
-  </CardContent>
-</Card>
-
->>>>>>> Stashed changes
+          {registrationSuccess && (
+            <Link href="/login" passHref>
+              <Button
+                variant="contained"
+                color="secondary"
+                fullWidth
+                className="mt-4"
+              >
+                Go to Login
+              </Button>
+            </Link>
+          )}
         </FormContainer>
       </div>
       <Snackbar
         open={snackbarOpen}
         autoHideDuration={6000}
         onClose={handleSnackbarClose}
-        anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
       >
-        <Alert onClose={handleSnackbarClose} severity={snackbarSeverity} sx={{ width: '100%' }}>
+        <Alert onClose={handleSnackbarClose} severity={snackbarSeverity}>
           {snackbarMessage}
         </Alert>
       </Snackbar>

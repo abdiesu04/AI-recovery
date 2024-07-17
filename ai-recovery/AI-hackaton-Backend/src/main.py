@@ -36,8 +36,6 @@ app.add_middleware(
 )
 
 # Add your routes here
-app.include_router(auth_router)
-app.include_router(users_router)
 
 
 mongo = "mongodb://127.0.0.1:27017/AIdb"
@@ -197,6 +195,9 @@ class MessageHabit(BaseModel):
     habit: str
     done: str
     
+app.include_router(auth_router)
+app.include_router(users_router)
+
 @app.get("/")
 def read_root():
     return {"Hello": "World"}

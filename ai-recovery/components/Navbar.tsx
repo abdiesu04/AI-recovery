@@ -62,7 +62,7 @@ const Navbar: React.FC = () => {
   return (
     <StyledAppBar position="static">
       <Toolbar>
-        <Link href="/" passHref>
+        <Link href="/home" passHref>
           <div className="flex items-center cursor-pointer">
             <Image src={logo} alt="Addis Hiwot" width={40} height={40} />
             <StyledLink variant="h6" className="ml-2">

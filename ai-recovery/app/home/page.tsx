@@ -9,6 +9,7 @@ import TrackChangesIcon from '@mui/icons-material/TrackChanges';
 import CustomCard from './CustomCard';
 import SupportCard from './SupportCard';
 import RecoveryPlans from './RecoveryPlans';
+import Link from 'next/link';
 
 const HomePage = () => {
   return (
@@ -41,17 +42,18 @@ const HomePage = () => {
                 <Typography variant="body2" className="text-gray-700 flex-grow">
                   View your progress through graphs and analytics.
                 </Typography>
+                <Link href="/checkin" passHref>
                 <Button
-                  variant="contained"
-                  className="bg-gradient-to-r from-green-400 via-green-500 to-green-600 text-white mt-4 w-full"
-                >
-                  View Your Progress
-                </Button>
+        variant="contained"
+        className="bg-gradient-to-r from-green-400 via-green-500 to-green-600 text-white mt-4 w-full"
+      >
+        View Your Progress
+      </Button>
+    </Link>
               </Card>
             </Grid>
           </Grid>
           <SupportCard/>
-
           <Grid container spacing={4}>
             <Grid item xs={12} md={6} className="mx-auto w-full md:w-4/5 mb-4">
               <CustomCard

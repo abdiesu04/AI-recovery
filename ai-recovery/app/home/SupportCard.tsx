@@ -5,6 +5,7 @@ import PhoneIcon from '@mui/icons-material/Phone';
 import ChatIcon from '@mui/icons-material/Chat';
 import ForumIcon from '@mui/icons-material/Forum';
 import SupportAgentIcon from '@mui/icons-material/SupportAgent';
+import Link from 'next/link'; // Importing Link from next/link
 
 const SupportComponents = () => {
   return (
@@ -54,20 +55,18 @@ const SupportComponents = () => {
             </Box>
           </Box>
         </Grid>
-
         {/* Get AI Support */}
         <Grid item xs={12}>
           <Box className="flex w-full flex-col md:flex-row items-start p-4 bg-white rounded-lg shadow-lg relative h-64">
             <Box className="md:w-1/2 flex w-full justify-center items-center p-4">
               <Box className="relative w-full h-full flex justify-center items-center">
                 <Image
-              
                   src="/Black.png"
                   alt="AI Support"
                   layout="intrinsic"
                   width={400}
                   height={200}
-                  className="rounded-lg  shadow-neomorph"
+                  className="rounded-lg shadow-neomorph"
                 />
               </Box>
             </Box>
@@ -86,10 +85,12 @@ const SupportComponents = () => {
                 <Typography variant="body2">Available 24/7</Typography>
               </Box>
               <Box className="mt-auto w-full">
-                <Button variant="contained" className="w-full bg-gradient-to-r from-green-400 via-green-500 to-green-600 text-white hover:opacity-70 text-xs mb-0">
-                  <ChatIcon className="mr-2" style={{ fontSize: 30 }} />
-                  Start Chat
-                </Button>
+                <Link href="/chat" passHref>
+                  <Button variant="contained" className="w-full bg-gradient-to-r from-green-400 via-green-500 to-green-600 text-white hover:opacity-70 text-xs mb-0">
+                    <ChatIcon className="mr-2" style={{ fontSize: 30 }} />
+                    Start Chat
+                  </Button>
+                </Link>
               </Box>
             </Box>
           </Box>

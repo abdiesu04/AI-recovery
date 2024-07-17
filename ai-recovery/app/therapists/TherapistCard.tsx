@@ -1,8 +1,8 @@
 import React from 'react';
 import Link from 'next/link';
-import { Card, CardContent, Typography, Button, Avatar, Box } from '@material-ui/core';
-import StarIcon from '@material-ui/icons/Star';
-import { green } from '@material-ui/core/colors';
+import { Card, CardContent, Typography, Button, Avatar, Box } from '@mui/material';
+import StarIcon from '@mui/icons-material/Star';
+import { green } from '@mui/material/colors';
 
 interface TherapistCardProps {
   therapist: {

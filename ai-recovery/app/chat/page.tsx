@@ -5,8 +5,10 @@ import { Box, TextField, Button, Paper, List, ListItem, Typography } from '@mui/
 import { useTheme } from '@mui/material/styles';
 import { useMediaQuery } from '@mui/material';
 import { sendMessage } from './api';
-import { green } from '@mui/material/colors';
+import { green, grey } from '@mui/material/colors';
 import EmojiObjectsIcon from '@mui/icons-material/EmojiObjects';
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 
 interface Message {
   role: 'user' | 'assistant';
@@ -53,22 +55,12 @@ const ChatWithAI: React.FC = () => {
     handleSend(prompt);
   };
 
-  const formatMessageContent = (content: string) => {
-    // Replace newlines with <br />
-    let formattedContent = content.replace(/\n/g, '<br />');
-    // Replace **something** with <b>something</b>
-    formattedContent = formattedContent.replace(/\*\*(.*?)\*\*/g, '<b>$1</b>');
-    // Replace *something with • something
-    formattedContent = formattedContent.replace(/\*(\w+)/g, '• $1');
-    return formattedContent;
-  };
-
   return (
     <Box sx={{
       display: 'flex',
       flexDirection: 'column',
-      height: '100%',
-      background: 'linear-gradient(135deg, #a8e6cf 0%, #dcedc1 100%)',
+      height: '100vh',
+      backgroundColor: 'white',
       p: 2,
     }}>
       <Box sx={{
@@ -85,12 +77,13 @@ const ChatWithAI: React.FC = () => {
             key={index}
             sx={{
               minWidth: 'fit-content',
+              color:'black',
               cursor: 'pointer',
               borderRadius: 4,
-              bgcolor: green[300], // Light green background color
-              color: theme.palette.secondary.contrastText, // White text color
+              bgcolor: green[50],
+              color: '#000',
               '&:hover': {
-                bgcolor: green[400], // Darker background on hover
+                bgcolor: green[100],
               },
               marginRight: 2,
               p: 1,
@@ -101,23 +94,21 @@ const ChatWithAI: React.FC = () => {
           </Paper>
         ))}
       </Box>
-      <div
-        style={{
+      <Box
+        sx={{
           flexGrow: 1,
-          padding: '16px', 
+          p: 2,
           overflow: 'auto',
-          background: 'linear-gradient(135deg, #a8e6cf 0%, #dcedc1 100%)',
-          borderRadius: '8px', 
+          backgroundColor: 'white',
+          borderRadius: 2,
+          boxShadow: 3,
         }}
       >
         <List>
           {messages.map((message, index) => (
             <ListItem key={index} sx={{ justifyContent: message.role === 'user' ? 'flex-end' : 'flex-start' }}>
-              <Paper sx={{ p: 1, bgcolor: message.role === 'user' ? green[500] : green[300], color: message.role === 'user' ? theme.palette.success.contrastText : theme.palette.secondary.contrastText, borderRadius: 2 }}>
-                <Typography
-                  variant="body1"
-                  dangerouslySetInnerHTML={{ __html: formatMessageContent(message.content) }}
-                />
+              <Paper sx={{ p: 1, bgcolor: message.role === 'user' ? green[50] : grey[300], color: message.role === 'user' ? theme.palette.text.primary : theme.palette.text.primary, borderRadius: 2 }}>
+                <ReactMarkdown remarkPlugins={[remarkGfm]}>{message.content}</ReactMarkdown>
               </Paper>
             </ListItem>
           ))}
@@ -129,8 +120,8 @@ const ChatWithAI: React.FC = () => {
             </ListItem>
           )}
         </List>
-      </div>
-      <Box sx={{ display: 'flex', p: 2, bgcolor: green[200], borderRadius: 2 }}>
+      </Box>
+      <Box sx={{ display: 'flex', p: 2, bgcolor: grey[100], borderRadius: 2, mt: 2, boxShadow: 3 }}>
         <TextField
           fullWidth
           variant="outlined"
@@ -143,14 +134,14 @@ const ChatWithAI: React.FC = () => {
               handleSend(input);
             }
           }}
-          sx={{ bgcolor: green[200], '& .MuiOutlinedInput-root': { borderRadius: 20 }, '& .MuiOutlinedInput-input': { color: theme.palette.primary.dark } }}
+          sx={{ bgcolor: 'white', '& .MuiOutlinedInput-root': { borderRadius: 20 }, '& .MuiOutlinedInput-input': { color: theme.palette.primary.dark } }}
         />
         <Button
           variant="contained"
           color="primary"
           onClick={() => handleSend(input)}
           disabled={loading || input.trim() === ''}
-          sx={{ bgcolor: green[700], ml: 1, borderRadius: 20, '&:hover': { bgcolor: green[800] } }}
+          sx={{ bgcolor: green[50], ml: 1, borderRadius: 20, '&:hover': { bgcolor: green[100] } }}
         >
           <EmojiObjectsIcon sx={{ fontSize: 20, marginRight: 1 }} />
           Send
