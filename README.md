@@ -3,6 +3,7 @@
 ## Overview
 
 The **Addiction Recovery Support Project** is an all-encompassing platform designed to assist individuals in their journey toward recovery, mental health improvement, and career development. The platform integrates AI-driven tools, personalized recovery plans, and career guidance to provide a holistic support system.
+![alt text](./public/AddisHiwot.jpg)
 
 ## Features
 
