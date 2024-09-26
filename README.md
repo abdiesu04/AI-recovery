@@ -3,32 +3,35 @@
 ## Overview
 
 The **Addiction Recovery Support Project** is an all-encompassing platform designed to assist individuals in their journey toward recovery, mental health improvement, and career development. The platform integrates AI-driven tools, personalized recovery plans, and career guidance to provide a holistic support system.
-![alt text](./public/AddisHiwot.jpg)
+![Home page](./public/AddisHiwot.jpg)
 
 ## Features
 
 1. **AI Chatbot for Immediate Assistance**
+
    - **User Authentication**: Secure login for all users.
    - **24/7 Availability**: The chatbot is available around the clock to provide support whenever needed.
    - **Empathetic Responses**: The chatbot provides empathetic and supportive responses to users.
    - **Resource Provision**: Users are provided with links to helpful articles, hotlines, and support groups.
-
+![AI chat](./public/chat.jpg)
 2. **Personalized Recovery Plans**
    - **User Profile**: Collects information on user history, preferences, and goals.
    - **Custom Plans**: Generates recovery plans tailored to individual needs.
    - **Adjustable Goals**: Allows users to set and adjust short-term and long-term goals.
+   ![Recovery Plans](./public/personalized%20recovery%20plans.jpg)
 
 3. **Progress Tracking**
    - **Milestone Celebration**: Tracks and celebrates user milestones.
    - **Progress Reports**: Provides regular reports on user progress.
    - **Data Visualization**: Visual representation of progress over time.
-
+![Home page](./public/home.jpg)
 4. **Mental Health Improvement**
    - **Mood and Behavior Analysis**:
      - Sentiment analysis to understand mood and emotional state.
      - Daily check-ins for mood updates.
      - Behavior trend tracking over time.
    - **Therapeutic Content**:
+   ![therapist](./public/therapist.jpg)
      - Personalized exercises like mindfulness and CBT techniques.
      - Access to a library of articles, videos, and audio resources.
      - Tracking user engagement with therapeutic content.
