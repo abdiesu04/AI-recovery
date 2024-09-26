@@ -40,20 +40,8 @@ The **Addiction Recovery Support Project** is an all-encompassing platform desig
      - Connects users to emergency contacts and resources.
      - Provides immediate guidance and support in crisis situations.
 
-5. **Career Guidance and Development**
-   - **Interest and Passion Identification**:
-     - AI-driven assessments to identify user interests and skills.
-     - Analysis of user hobbies, experiences, and skills.
-   - **Skill Development Resources**:
-     - Recommendations for relevant online courses and tutorials.
-     - Certification tracking to monitor progress.
-     - Personalized learning paths based on career goals.
-   - **Job Matching and Preparation**:
-     - Algorithm to match users with job opportunities.
-     - Resume builder for creating and refining resumes.
-     - Interview preparation tips and mock interview sessions.
 
-6. **Additional Features**
+5. **Additional Features To be Added**
    - **Community Support**:
      - Forums for sharing experiences and offering support.
      - Virtual support groups for various topics.
@@ -73,13 +61,13 @@ To set up the project locally, follow these steps:
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/addiction-recovery-support.git
+   git clone https://github.com/abdiesu04/addiction-recovery-support.git
    ```
 2 Navigate to the project directory:
 
 ```bash
 
-cd addiction-recovery-support
+cd ai-recovery
 ```
 3 Install the dependencies:
 
@@ -91,7 +79,7 @@ npm install
 
 ```bash
 
-npm start
+npm run dev
 ```
 Contributing
 Contributions are welcome! Please fork the repository and submit a pull request with your changes.
