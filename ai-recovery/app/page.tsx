@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import React, { useEffect, useState } from 'react';
 import { Button } from '@mui/material';
 import FeaturesCard from '@/components/FeaturesCard';

@@ -1,88 +1,81 @@
 # Addiction Recovery Support Project
 
-## Overview
+An AI-powered platform designed to assist individuals in their journey toward recovery, mental health improvement, and career development.
 
-The **Addiction Recovery Support Project** is an all-encompassing platform designed to assist individuals in their journey toward recovery, mental health improvement, and career development. The platform integrates AI-driven tools, personalized recovery plans, and career guidance to provide a holistic support system.
 ![Home page](./public/AddisHiwot.jpg)
 
 ## Features
 
-1. **AI Chatbot for Immediate Assistance**
+### AI Chatbot for Immediate Assistance
 
-   - **User Authentication**: Secure login for all users.
-   - **24/7 Availability**: The chatbot is available around the clock to provide support whenever needed.
-   - **Empathetic Responses**: The chatbot provides empathetic and supportive responses to users.
-   - **Resource Provision**: Users are provided with links to helpful articles, hotlines, and support groups.
+- Secure user authentication
+- 24/7 empathetic AI support
+- Links to helpful articles, hotlines, and support groups
+
 ![AI chat](./public/chat.jpg)
-2. **Personalized Recovery Plans**
-   - **User Profile**: Collects information on user history, preferences, and goals.
-   - **Custom Plans**: Generates recovery plans tailored to individual needs.
-   - **Adjustable Goals**: Allows users to set and adjust short-term and long-term goals.
-   ![Recovery Plans](./public/personalized%20recovery%20plans.jpg)
 
-3. **Progress Tracking**
-   - **Milestone Celebration**: Tracks and celebrates user milestones.
-   - **Progress Reports**: Provides regular reports on user progress.
-   - **Data Visualization**: Visual representation of progress over time.
+### Personalized Recovery Plans
+
+- User profile with history, preferences, and goals
+- AI-generated recovery plans tailored to individual needs
+- Adjustable short-term and long-term goals
+
+![Recovery Plans](./public/personalized%20recovery%20plans.jpg)
+
+### Progress Tracking
+
+- Milestone celebration and progress reports
+- Data visualization over time
+
 ![Home page](./public/home.jpg)
-4. **Mental Health Improvement**
-   - **Mood and Behavior Analysis**:
-     - Sentiment analysis to understand mood and emotional state.
-     - Daily check-ins for mood updates.
-     - Behavior trend tracking over time.
-   - **Therapeutic Content**:
-   ![therapist](./public/therapist.jpg)
-     - Personalized exercises like mindfulness and CBT techniques.
-     - Access to a library of articles, videos, and audio resources.
-     - Tracking user engagement with therapeutic content.
-   - **Crisis Intervention**:
-     - Alert system to detect signs of severe distress.
-     - Connects users to emergency contacts and resources.
-     - Provides immediate guidance and support in crisis situations.
 
+### Mental Health Improvement
 
-5. **Additional Features To be Added**
-   - **Community Support**:
-     - Forums for sharing experiences and offering support.
-     - Virtual support groups for various topics.
-     - Peer connections for mutual support.
-   - **Progress Dashboard**:
-     - User-friendly dashboard to visualize progress across different areas.
-     - Display of key metrics in addiction recovery, mental health, and career development.
-     - Customizable views for personalized dashboard experiences.
-   - **Privacy and Security**:
-     - Data encryption to ensure privacy.
-     - Secure authentication methods for user safety.
-     - Compliance with data protection regulations such as GDPR and HIPAA.
+- Mood and behavior analysis with sentiment tracking
+- Daily check-ins and therapeutic content (mindfulness, CBT)
+- Crisis intervention with emergency resource connections
 
-## Installation
+![Therapist](./public/therapist.jpg)
 
-To set up the project locally, follow these steps:
+### Upcoming Features
 
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/abdiesu04/addiction-recovery-support.git
-   ```
-2 Navigate to the project directory:
+- Community support forums and virtual groups
+- Progress dashboard with customizable views
+- Privacy and security (encryption, GDPR/HIPAA compliance)
+
+## Quick Start
 
 ```bash
-
-cd ai-recovery
-```
-3 Install the dependencies:
-
-```bash
-
+git clone https://github.com/abdiesu04/AI-recovery.git
+cd AI-recovery/ai-recovery
 npm install
-```
-4 Start the development server:
-
-```bash
-
 npm run dev
 ```
-Contributing
-Contributions are welcome! Please fork the repository and submit a pull request with your changes.
 
-License
+Open [http://localhost:3000](http://localhost:3000).
+
+For full setup including the backend, see [docs/GETTING_STARTED.md](./docs/GETTING_STARTED.md).
+
+## Documentation
+
+| Document | Description |
+|----------|-------------|
+| [Getting Started](./docs/GETTING_STARTED.md) | Installation and local setup |
+| [Architecture](./docs/ARCHITECTURE.md) | System design and tech stack |
+| [API Reference](./docs/API.md) | Backend endpoint documentation |
+| [Contributing](./docs/CONTRIBUTING.md) | How to contribute |
+| [Code Style](./docs/CODE_STYLE.md) | Formatting and conventions |
+
+## Tech Stack
+
+- **Frontend:** Next.js 14, React 18, TypeScript, Tailwind CSS, MUI
+- **Backend:** FastAPI, Python, MongoDB
+- **AI:** Google Gemini via LangChain
+
+## Contributing
+
+Contributions are welcome! Please read [docs/CONTRIBUTING.md](./docs/CONTRIBUTING.md) before submitting a pull request.
+
+## License
+
 This project is licensed under the MIT License.

@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import React, { useState, useEffect } from 'react';
 import { Card, CardContent, Typography, CircularProgress, Box, Avatar } from '@mui/material';
 import { green } from '@mui/material/colors';

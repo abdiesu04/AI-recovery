@@ -1,11 +1,11 @@
-'use client'
+"use client";
 import React from 'react';
 import InspirationalQuotesCard from '@/components/cards/InspirationalQuotesCard';
 import PersonalGoalsCard from '@/components/cards/PersonalGoalsCard';
 import DailyCheckInCard from '@/components/cards/DailyCheckInCard';
 import EventsMeetupsCard from '@/components/cards/EventsMeetupsCard';
 import RemindersCard from '@/components/cards/RemindersCard';
-import ChartCard from '@/components/cards/ComingSoonBadge';
+import ComingSoonBadge from "@/components/cards/ComingSoonBadge";
 
 const Home: React.FC = () => {
   return (
@@ -24,14 +24,14 @@ const Home: React.FC = () => {
         <RemindersCard />
       </div>
       <div className="lg:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-4">
-        <ChartCard title="Sobriety Days" chartType="line" />
-        <ChartCard title="Cravings" chartType="bar" />
-        <ChartCard title="Therapy Sessions" chartType="pie" />
-        <ChartCard title="Support Group Attendance" chartType="line" />
+        <ComingSoonBadge title="Sobriety Days" chartType="line" />
+        <ComingSoonBadge title="Cravings" chartType="bar" />
+        <ComingSoonBadge title="Therapy Sessions" chartType="pie" />
+        <ComingSoonBadge title="Support Group Attendance" chartType="line" />
       </div>
       <div className="lg:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-4">
-        <ChartCard title="Mood Trends" chartType="bar" />
-        <ChartCard title="Sleep Quality" chartType="bar" />
+        <ComingSoonBadge title="Mood Trends" chartType="bar" />
+        <ComingSoonBadge title="Sleep Quality" chartType="bar" />
       </div>
     </div>
   );
