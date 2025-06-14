@@ -1,12 +1,21 @@
 {
-    "cSpell.words": [
-        "checkin",
-        "dotenv",
-        "fastapi",
-        "genai",
-        "langchain",
-        "pydantic",
-        "pymongo",
-        "uvicorn"
-    ]
+  "cSpell.words": [
+    "checkin",
+    "dotenv",
+    "fastapi",
+    "genai",
+    "langchain",
+    "pydantic",
+    "pymongo",
+    "uvicorn"
+  ],
+  "task.allowAutomaticTasks": true,
+  "debug.openDebug": "neverOpen",
+  "terminal.integrated.inheritEnv": false,
+  "tasks": {
+    "label": "lint on open",
+    "type": "shell",
+    "command": "npm run lint",
+    "runOn": "folderOpen"
+  }
 }

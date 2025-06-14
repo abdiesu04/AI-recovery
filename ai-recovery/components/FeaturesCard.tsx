@@ -1,8 +1,7 @@
-
-import React from 'react';
-import { Container, Typography, Box } from '@mui/material';
-import { Dashboard, People, Support, CalendarToday, EmojiEvents } from '@mui/icons-material';
-import './features.module.css';
+import React from "react";
+import { Container, Typography, Box } from "@mui/material";
+import { Dashboard, People, Support, CalendarToday, EmojiEvents } from "@mui/icons-material";
+import styles from "./features.module.css";
 
 import InspirationalQuotesCard from './cards/InspirationalQuotesCard';
 import AIAssistantCard from './cards/AIAssistantCard';
@@ -20,7 +19,7 @@ import FeatureCard from './FeatureCard';
 
 const Features: React.FC = () => {
   return (
-    <Container maxWidth="lg" className="features py-16 bg-green-100">
+    <Container maxWidth="lg" className={`${styles.features} py-16 bg-green-100`}>
       <Box className="text-center mb-12">
         <Typography variant="h4" component="h1" className="font-bold mb-4">
           Comprehensive Support for Your Recovery
@@ -29,7 +28,7 @@ const Features: React.FC = () => {
           Our recovery app offers a wide range of features to support you throughout your addiction recovery journey.
         </Typography>
       </Box>
-      <div className="features grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div className={`${styles.features} grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8`}>
         {/* Main Features */}
         <FeatureCard>
           <AIAssistantCard />
@@ -59,7 +58,7 @@ const Features: React.FC = () => {
         </Typography>
       </Box>
       
-      <div className="features grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div className={`${styles.features} grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8`}>
         {/* Main Features */}
         <FeatureCard>
           <DashboardCard/>
