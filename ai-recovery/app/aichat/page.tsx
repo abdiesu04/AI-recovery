@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 import React from 'react';
 import { Box, Typography, TextField, IconButton } from '@mui/material';
@@ -11,9 +11,12 @@ const AIPage: React.FC = () => {
   return (
     <Box className="flex flex-col min-h-screen bg-gradient-to-b from-black to-gray-900">
       <Box className="flex flex-1">
-        <Sidebar isOpen={false} toggleSidebar={function (): void {
-          throw new Error('Function not implemented.');
-        } } />
+        <Sidebar
+          isOpen={false}
+          toggleSidebar={() => {
+            throw new Error("Function not implemented.");
+          }}
+        />
         <Box className="flex-1 p-6 text-white">
           <Box className="flex items-center justify-between">
             <Typography variant="h5" className="font-bold">
@@ -27,7 +30,7 @@ const AIPage: React.FC = () => {
             {/* Chat area */}
             <Box className="h-96 overflow-y-auto p-4 bg-gradient-to-b from-gray-800 to-gray-700 rounded-lg"></Box>
             {/* User prompt */}
-            <Box className="mt-4l flex items-center">
+            <Box className="mt-4 flex items-center">
               <TextField
                 variant="outlined"
                 placeholder="User Prompt..."
