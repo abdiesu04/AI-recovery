@@ -1,36 +1,45 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# AI Recovery — Frontend
 
-## Getting Started
+Next.js 14 application for the [Addiction Recovery Support Project](../README.md).
 
-First, run the development server:
+## Quick Start
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Scripts
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+| Command | Description |
+|---------|-------------|
+| `npm run dev` | Start development server |
+| `npm run build` | Production build |
+| `npm run start` | Run production server |
+| `npm run lint` | Run ESLint |
+| `npm run format` | Format with Prettier |
+| `npm run format:check` | Check Prettier formatting |
 
-## Learn More
+## Project Structure
 
-To learn more about Next.js, take a look at the following resources:
+```
+ai-recovery/
+├── app/              # Next.js App Router pages and API helpers
+├── components/       # Reusable React components
+├── public/           # Static assets
+└── AI-hackaton-Backend/  # FastAPI backend
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Documentation
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+See the [docs/](../docs/) folder at the repository root for full documentation:
 
-## Deploy on Vercel
+- [Getting Started](../docs/GETTING_STARTED.md)
+- [Architecture](../docs/ARCHITECTURE.md)
+- [API Reference](../docs/API.md)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Backend
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+The FastAPI backend must be running on port 8000 for AI features. See [Getting Started](../docs/GETTING_STARTED.md#3-backend-setup-fastapi).
